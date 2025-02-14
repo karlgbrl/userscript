@@ -1,3 +1,7 @@
+if (document.title == 'Just a moment...') {
+    return;
+}
+
 function extractPlatoTicket(url) {
     try {
         const urlObj = new URL(url);
@@ -32,10 +36,10 @@ async function checkPlatoboostStatus(url){
                 if (responseData.data.key === "KEY_NOT_FOUND" || responseData.data.minutesLeft === 0) {
                     return false;
                 } else if (responseData.data.key.startsWith("FREE_") || responseData.data.minutesLeft > 0) {
-                    return responseData.data.key;
+                    return {res: responseData.data.key};
                 }
             } else if (responseData.data.message.includes('claim timestamp check failed')) {
-                return false;
+                return {res: false};
             }
         } catch (Error) {
             console.log("Error Check Platoboost Status:", Error);
