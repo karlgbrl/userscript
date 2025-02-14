@@ -32,14 +32,13 @@ async function checkPlatoboostStatus(url){
             }
 
             const responseData = await response.json();
-            console.log(responseData);
-            if (responseData.data.key) {
+            if (responseData.data && responseData.data.key) {
                 if (responseData.data.key === "KEY_NOT_FOUND" || responseData.data.minutesLeft === 0) {
                     return false;
                 } else if (responseData.data.key.startsWith("FREE_") || responseData.data.minutesLeft > 0) {
                     return {res: responseData.data.key};
                 }
-            } else if (responseData.data.message.includes('claim timestamp check failed')) {
+            } else if (responseData.message.includes('claim timestamp check failed')) {
                 return {res: false};
             }
         } catch (Error) {
