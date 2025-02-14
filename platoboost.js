@@ -73,14 +73,18 @@ async function getMetaDataPlatoboost(url) {
 }
 
 async function handlePlatoboostKeyCheck(url) {
-    const check = await checkPlatoboostStatus(url);
-    if (check) {
-        if (copyconfig().platoboost) {
-            GM_setClipboard(check);
-            await notifyUser("Copied Key", check, 60 * 1000, false, check);
+    const data = await checkPlatoboostStatus(url);
+    if (data) {
+        if (data.res) {
+            if (copyconfig().platoboost) {
+                GM_setClipboard(data.res);
+                await notifyUser("Copied Key", data.res, 60 * 1000, false, data.res);
+            } else {
+                console.log(`Already got key!`);
+                await notifyUser("Got Key", data.res, 60 * 1000, false, data.res);
+            }
         } else {
-            console.log(`Already got key!`);
-            await notifyUser("Got Key", check, 60 * 1000, false, check);
+            await notifyUser("Expired Link Detected", "Bypass Failed, Request for a new link.", 10 * 1000, null, "Bypass Failed, Request for a new link.");
         }
         return true;
     } else {
