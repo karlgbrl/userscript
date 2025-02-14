@@ -1,4 +1,4 @@
-function extractPlatoTicket(url) {
+async function extractPlatoTicket(url) {
     try {
         const urlObj = new URL(url);
         const pathParts = urlObj.pathname.split('/');
