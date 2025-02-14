@@ -1,23 +1,3 @@
-// @name         Platoboost Bypass Library
-// @namespace    http://tampermonkey.net/
-// @version      0.2 // Initial version for library
-// @description  Platoboost Bypass Functions (Library)
-// @author       Gabriel
-// @icon         https://w0.peakpx.com/wallpaper/874/748/HD-wallpaper-anime-app-icon-anime-app-icon.jpg
-// @grant        GM_xmlhttpRequest
-// @grant        GM_setClipboard
-// @grant        GM_getValue
-// @grant        GM_setValue
-// @require      https://github.com/karlgbrl/userscript/raw/refs/heads/main/notifyuser.js
-// @connect      api.gabcode.dev
-// @connect      auth.platoboost.com
-// @connect      auth.platoboost.net
-// @connect      linkvertise.com
-// @connect      loot-link.com
-// @connect      lootdest.org
-// @connect      linksloot.com
-// @connect      lootdest.com
-
 function extractPlatoTicket(url) {
     try {
         const urlObj = new URL(url);
