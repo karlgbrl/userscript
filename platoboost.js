@@ -32,6 +32,7 @@ async function checkPlatoboostStatus(url){
             }
 
             const responseData = await response.json();
+            console.log(responseData);
             if (responseData.data.key) {
                 if (responseData.data.key === "KEY_NOT_FOUND" || responseData.data.minutesLeft === 0) {
                     return false;
