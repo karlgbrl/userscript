@@ -28,10 +28,14 @@ async function checkPlatoboostStatus(url){
             }
 
             const responseData = await response.json();
-            if (responseData.data.key === "KEY_NOT_FOUND" || responseData.data.minutesLeft === 0) {
+            if (responseData.data.key) {
+                if (responseData.data.key === "KEY_NOT_FOUND" || responseData.data.minutesLeft === 0) {
+                    return false;
+                } else if (responseData.data.key.startsWith("FREE_") || responseData.data.minutesLeft > 0) {
+                    return responseData.data.key;
+                }
+            } else if (responseData.data.message.includes('claim timestamp check failed')) {
                 return false;
-            } else if (responseData.data.key.startsWith("FREE_") || responseData.data.minutesLeft > 0) {
-                return responseData.data.key;
             }
         } catch (Error) {
             console.log("Error Check Platoboost Status:", Error);
