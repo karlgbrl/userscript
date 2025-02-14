@@ -18,6 +18,19 @@
 // @connect      linksloot.com
 // @connect      lootdest.com
 
+function extractPlatoTicket(url) {
+    try {
+        const urlObj = new URL(url);
+        const pathParts = urlObj.pathname.split('/');
+        if (pathParts.length > 1) {
+            return pathParts[1];
+        }
+        return null;
+    } catch (error) {
+        return null;
+    }
+}
+
 async function checkPlatoboostStatus(url){
     const ticket = extractPlatoTicket(url);
     if (ticket){
