@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        GabCode Platoboost Bypass
 // @namespace   http://tampermonkey.net/
-// @version     1.2.8
+// @version     1.2.9
 // @description Automatically bypass platoboost
 // @author      Gabriel
 // @match       *://linkvertise.com/*/*
@@ -44,7 +44,7 @@ function config() {
     const apikey = '';
     return {
         redirect: {
-            wait: 10,
+            wait: 10, // for luarmor, try 30-40s for safety
             enabled: true
         },
         apikey: apikey // enter your api
