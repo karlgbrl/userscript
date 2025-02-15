@@ -125,6 +125,18 @@ if (!document.querySelector('.notification-styles-injected')) {
     addStyles(myCSS);
 }
 
+const notificationObserver = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+        if (mutation.removedNodes.length) {
+            mutation.removedNodes.forEach(node => {
+                if (node.classList && node.classList.contains('notification')) {
+                    recalculateNotificationPositions();
+                }
+            });
+        }
+    });
+});
+
 async function notifyUser(title, message, timeout = 5000, options = {}) {
     const { redirectURL = null, copyText = null, customColor = "#0C0C0C", countdown = false } = options;
 
@@ -147,7 +159,6 @@ async function notifyUser(title, message, timeout = 5000, options = {}) {
             ${countdown ? '<div class="notification-countdown"></div>' : ''}
         `;
 
-        // Stacking Logic:
         const existingNotifications = document.querySelectorAll('.notification');
         let topPosition = 20;
 
@@ -215,6 +226,17 @@ async function notifyUser(title, message, timeout = 5000, options = {}) {
         setTimeout(() => {
             notification.remove();
             resolve();
+            setTimeout(recalculateNotificationPositions, 10);
         }, timeout);
+    });
+}
+
+function recalculateNotificationPositions() {
+    const existingNotifications = document.querySelectorAll('.notification');
+    let topPosition = 20;
+
+    existingNotifications.forEach(notif => {
+        notif.style.top = `${topPosition}px`;
+        topPosition += notif.offsetHeight + 20;
     });
 }
