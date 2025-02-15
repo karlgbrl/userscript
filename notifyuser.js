@@ -27,6 +27,7 @@ const myCSS = `
         box-sizing: border-box;
         /* Use word-wrap for older browsers, overflow-wrap for modern ones */
         word-wrap: break-word; /* Legacy browsers */
+        overflow-x: hidden;
         overflow-wrap: break-word; /* Modern browsers */
     }
 
