@@ -25,7 +25,9 @@ const myCSS = `
         flex-direction: column;
         align-items: flex-start;
         box-sizing: border-box;
-        overflow-wrap: break-word;
+        /* Use word-wrap for older browsers, overflow-wrap for modern ones */
+        word-wrap: break-word; /* Legacy browsers */
+        overflow-wrap: break-word; /* Modern browsers */
     }
 
     .notification-title {
@@ -143,6 +145,17 @@ async function notifyUser(title, message, timeout = 5000, options = {}) {
             <div class="notification-buttons"></div>
             ${countdown ? '<div class="notification-countdown"></div>' : ''}
         `;
+
+        // Stacking Logic:
+        const existingNotifications = document.querySelectorAll('.notification');
+        let topPosition = 20;
+
+        if (existingNotifications.length > 0) {
+            const lastNotification = existingNotifications[existingNotifications.length - 1];
+            topPosition = lastNotification.offsetTop + lastNotification.offsetHeight + 20; // Add spacing (20px)
+        }
+
+        notification.style.top = `${topPosition}px`; // Set the top position
 
         const buttonContainer = notification.querySelector('.notification-buttons');
         const countdownElement = notification.querySelector('.notification-countdown');
