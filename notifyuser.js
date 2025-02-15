@@ -211,7 +211,7 @@ async function notifyUser(title, message, timeout = 5000, options = {}) {
 
         if (countdown && countdownElement) {
             let remainingTime = timeout / 1000;
-            countdownElement.textContent = `(${remainingTime})`;
+            countdownElement.textContent = countdownText.replaceAll(`{time}`, remainingTime);
             const countdownInterval = setInterval(() => {
                 remainingTime--;
                 countdownElement.textContent = countdownText.replaceAll(`{time}`, remainingTime);
