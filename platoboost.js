@@ -1,1 +1,410 @@
-const _0x2a1fb9=_0x46d2;(function(_0x3a7645,_0x3fbaa6){const _0x19f949=_0x46d2,_0x26d79b=_0x3a7645();while(!![]){try{const _0x136af7=parseInt(_0x19f949(0x23d))/(-0x22ce+-0x22c6+0x4595*0x1)+parseInt(_0x19f949(0x25d))/(0xaf*0x5+-0x1*0xa4a+0x1*0x6e1)+parseInt(_0x19f949(0x254))/(-0x1ae0+0x867+0x127c)+-parseInt(_0x19f949(0x2d1))/(0x126c+-0x10b4+-0x1b4)*(parseInt(_0x19f949(0x218))/(-0x120+0x3*0x216+-0x51d))+-parseInt(_0x19f949(0x209))/(0x2547+0x953+-0x2e94)*(parseInt(_0x19f949(0x270))/(0x1ac3+-0x5b7+-0x1505))+-parseInt(_0x19f949(0x2a4))/(-0x14ff+-0x1*0x19de+0x2ee5)+-parseInt(_0x19f949(0x2e3))/(-0x20b5+0x1076*0x2+0x17*-0x2)*(-parseInt(_0x19f949(0x250))/(-0x3*0x435+0x4*0x55a+0x1*-0x8bf));if(_0x136af7===_0x3fbaa6)break;else _0x26d79b['push'](_0x26d79b['shift']());}catch(_0x53b35f){_0x26d79b['push'](_0x26d79b['shift']());}}}(_0x21a2,0x439*-0xad+0x1cbd*0x13+0x29684));if(document[_0x2a1fb9(0x2b3)]==_0x2a1fb9(0x214)+_0x2a1fb9(0x268))return;async function checkapikey(){const _0x18569e=_0x2a1fb9,_0x1d3606={'wOiEH':function(_0x932689,_0x21f2f2,_0x5a841f){return _0x932689(_0x21f2f2,_0x5a841f);},'OOaSF':_0x18569e(0x2bb),'zmNop':_0x18569e(0x25a)+_0x18569e(0x1ee),'mGtGm':function(_0x14ff00){return _0x14ff00();},'sfBmP':_0x18569e(0x233)+_0x18569e(0x30c)+_0x18569e(0x267)};try{const _0x2aa075=await _0x1d3606[_0x18569e(0x2d4)](fetch,_0x18569e(0x2bc)+_0x18569e(0x28b)+_0x18569e(0x21a),{'method':_0x1d3606[_0x18569e(0x307)],'headers':{'Content-Type':_0x1d3606[_0x18569e(0x1ca)],'x-api-key':_0x1d3606[_0x18569e(0x293)](config)[_0x18569e(0x2d9)]}});if(!_0x2aa075['ok']){const _0x1ca3cf=await _0x2aa075[_0x18569e(0x28d)]();return console[_0x18569e(0x1db)](_0x18569e(0x252)+_0x18569e(0x1ce)+':\x20'+_0x2aa075[_0x18569e(0x219)]+_0x18569e(0x2d5)+_0x1ca3cf),![];}const _0x141e49=await _0x2aa075[_0x18569e(0x222)]();return!![];}catch(_0x44610e){return console[_0x18569e(0x1db)](_0x1d3606[_0x18569e(0x29d)],_0x44610e),![];}}async function bypassRequest(_0x46b86f){const _0x4d3229=_0x2a1fb9,_0x1f5cb5={'KzDLK':function(_0x306109,_0x11f0d4,_0x203a01){return _0x306109(_0x11f0d4,_0x203a01);},'tSXjO':function(_0x34649a,_0xa6f86f){return _0x34649a(_0xa6f86f);},'DjWBR':_0x4d3229(0x2bb),'iWKJE':_0x4d3229(0x25a)+_0x4d3229(0x1ee),'fxMJS':function(_0x1c2166){return _0x1c2166();},'TXOAO':_0x4d3229(0x2c4)+_0x4d3229(0x282)+_0x4d3229(0x276)+_0x4d3229(0x1d6),'zAuzp':_0x4d3229(0x2a6)+_0x4d3229(0x258)+_0x4d3229(0x23c)+_0x4d3229(0x1d3)};try{const _0x34f628=await _0x1f5cb5[_0x4d3229(0x234)](fetch,_0x4d3229(0x2bc)+_0x4d3229(0x28b)+_0x4d3229(0x262)+_0x4d3229(0x2b0)+_0x1f5cb5[_0x4d3229(0x1d7)](encodeURIComponent,_0x46b86f),{'method':_0x1f5cb5[_0x4d3229(0x28e)],'headers':{'Content-Type':_0x1f5cb5[_0x4d3229(0x288)],'x-api-key':_0x1f5cb5[_0x4d3229(0x310)](config)[_0x4d3229(0x2d9)]}});if(!_0x34f628['ok']){const _0x420e08=await _0x34f628[_0x4d3229(0x28d)]();console[_0x4d3229(0x1db)](_0x4d3229(0x294)+_0x4d3229(0x2dc),_0x34f628[_0x4d3229(0x219)],_0x420e08);throw new Error(_0x4d3229(0x2a6)+_0x4d3229(0x31e)+_0x4d3229(0x201)+_0x34f628[_0x4d3229(0x219)]+_0x4d3229(0x2d5)+_0x420e08+')');}const _0x2f7e8d=await _0x34f628[_0x4d3229(0x222)]();if(_0x2f7e8d)return _0x2f7e8d;else{console[_0x4d3229(0x1db)](_0x1f5cb5[_0x4d3229(0x1cc)],_0x2f7e8d);throw new Error(_0x1f5cb5[_0x4d3229(0x2d7)]);}}catch(_0x3d6bfe){console[_0x4d3229(0x1f4)](_0x3d6bfe);throw _0x3d6bfe;}}function _0x21a2(){const _0x59d12e=['KWfkp','hkKwO','bWPUs','nueProfile','king\x20API\x20k','dcYDt','ot-link.co','yOeFE','fxMJS','key','claim\x20time','split','Platoboost','get\x20Platob','tage','HTTP\x20error','fhoQc','/authentic','minutesLef','platoboost','srMIA','aLPaZ','led:\x20API\x20e','POST','stem?step=','UFOQA','jxhCa','zmNop','location','TXOAO','NEO','eck\x20failed','dptTc','result','Invalid\x20AP','xzTrW','s\x20missing.','led.\x20Check','BpLCe','onse:','tSXjO','PUT','stem-1?o=s','FRoFk','error','neo-key-sy','on/metadat','failed\x20to\x20','dmteam.com','Redirectin','com/376138','\x20the\x20conso','https://','HSDpO','tise&OS=io','Refreshing','cket=','oghZA','https://li','ifier\x20alre','Gfpou','QlBtx','otdest.com','n/json','WgbVL','startsWith','led,\x20Reque','uuid','/api/keysy','log','mDAjS','tected','querySelec','xcDIk','KXVbT','VQjCr','rIVHV','OqEzR','hscAc','message','ted','led\x20or\x20res','rror\x20(','AhPap','https://sp','Expired\x20Li','a\x20new\x20URL','ew\x20link.','ails.','ate','6tXTFyx','JXWqd','.lol','activeReve','url','Error\x20Chec','wyCVk','ass','ribEV','FREE_','captcha','Just\x20a\x20mom','getElement','I\x20Key','/api/sessi','5iLiyyp','status','dev/key','oRcAI','Captcha\x20De','m/s?qlbU','\x20Page','exhKb','Bknja','includes','json','KEY_NOT_FO','pass\x20error','WqSqq','WjMIW','1&advertis','MExUP','st\x20for\x20a\x20n','lzrYU','length','/arceus-x-','FkCwv','stages','&service=','on/step?ti','3&advertis','dDeai','Error\x20chec','KzDLK','Already\x20go','RFeLt','ady\x20exists','MYxqD','mXxDR','stamp\x20chec','k\x20failed','t\x20or\x20Statu','238024hBEPqX','YSzeG','vgSwl','https://lo','whiCJ','Error','innerHTML','success','MjIvQ','jYgIr','getItem','sLkwl','service','\x20stages','Moving\x20to\x20','ticket=','m/s?mYit','k\x20Platoboo','android-se','20HGHRIj','parse','API\x20key\x20ch','hostname','150879bsNzys','JrSPE','stringify','m-2?hwid=','led:\x20Resul','Get\x20starte','applicatio','wbCSd','icated','162880qmygJK','QhhTr','Error:\x20','ocBnM','kuPhz','dev/bypass','le\x20for\x20det','sByTagName','oost\x20Ticke','bile.codex','ey:','ent...','ajPbX','LDKtd','get\x20Ticket','Successful','UND','/key-syste','NkTtp','910175Tihtlq','validate\x20s','zoNWy','EAbNp','rDaoY','tIkMR','sing.\x20Resp','\x20Completed','bxoBW','on/status?','nk\x20Detecte','Ceoih','span.text-','this\x20ident','authentica','/stages','st\x20Status:','HgNwq','Status\x20mis','qQfql','data','KGNyd','IPzET','2&advertis','iWKJE','om/','npmAt','i.gabcode.','FmCZq','text','DjWBR','nkvertise.','IqHqM','please\x20com','ZhzNV','mGtGm','API\x20reques','ost.net/','ost.com/','\x20API\x20or\x20by','BlSNq','uVThy','er=linkver','STbju','laTDL','sfBmP','xsuow','snpei','ZWUjM','MGEpz','m-getkey','!\x20status:\x20','1736392RNHLuA','a\x20key\x20for\x20','Bypass\x20fai','pathname','eeUZE','l/v1/stage','vSDpY','umXao','plete\x20the\x20','ssion','Got\x20Key','WrTYT','?url=','YkhYF','about:blan','title','uccessfull','Bypass\x20Fai','zRUto','get\x20stages','res','wSbZu','GNXVn','GET','https://ap','tor','ly\x20Authent','/s?qljL','RpIJP','pKXKN','loot-links','gray-500','Result\x20or\x20','VFuRF','gkiuZ','Failed\x20to\x20','t\x20key!','zQuXi','SfjnV','IwiPe','PyfpH','vADsw','vKBrV','th.platobo','Stage\x20comp','839372gJbKOv','haring','a?ticket=','wOiEH','\x20-\x20','link','zAuzp','Key\x20System','apikey','QktVl','TBFQf','t\x20failed:','jrHEr','RdbRu','reload','token','ult\x20is\x20mis','com/','1392903AJwhrh','kAUCU','Solve\x20the\x20','/validate','nPeeb','click','m-3?hwid=','/initiate','HHBxE','Bypassed\x20S','https://mo','drxCX','DnXqh','oZSZx','ot-links.c','ZnTxr','push','FKJHo','loot-link','empty','QbFLx','pnxHC','href','kjpxQ','replace','initiate\x20s','auhJb','i.codex.lo','Copied\x20Key','https://au','leted','textConten','lwHSS','CKKrO','Arceus\x20Byp','sing:','OOaSF'];_0x21a2=function(){return _0x59d12e;};return _0x21a2();}async function handlePlatoboost(_0x87ca31){const _0x35ab29=_0x2a1fb9,_0x2e00d2={'RdbRu':function(_0x3a547e,_0x514109){return _0x3a547e>_0x514109;},'kjpxQ':function(_0x209119,_0x26d82b){return _0x209119(_0x26d82b);},'oghZA':function(_0x3c8446){return _0x3c8446();},'xcDIk':function(_0x30dfba,_0x33168e){return _0x30dfba(_0x33168e);},'FKJHo':function(_0x1354c3,_0x811faf,_0x17daa1,_0x5a5a1d,_0xc5ec99,_0x115ba3){return _0x1354c3(_0x811faf,_0x17daa1,_0x5a5a1d,_0xc5ec99,_0x115ba3);},'YkhYF':_0x35ab29(0x2ff),'mXxDR':function(_0x34f368,_0x54fea8){return _0x34f368*_0x54fea8;},'Ceoih':function(_0x41913d,_0x163183,_0x4f824a,_0x175a71,_0xd7e7f2,_0x5b8a30){return _0x41913d(_0x163183,_0x4f824a,_0x175a71,_0xd7e7f2,_0x5b8a30);},'lwHSS':_0x35ab29(0x2ae),'VFuRF':function(_0x419b4e,_0x181735){return _0x419b4e*_0x181735;},'MYxqD':_0x35ab29(0x204)+_0x35ab29(0x27a)+'d','ZnTxr':_0x35ab29(0x2b5)+_0x35ab29(0x1f1)+_0x35ab29(0x229)+_0x35ab29(0x206),'vKBrV':function(_0x1a99de,_0x3275ef){return _0x1a99de*_0x3275ef;},'WrTYT':function(_0x40b4d4,_0xb6b7d1){return _0x40b4d4(_0xb6b7d1);},'eeUZE':function(_0x530b29,_0x389e4c,_0x54c44c){return _0x530b29(_0x389e4c,_0x54c44c);},'TBFQf':_0x35ab29(0x2bb),'GNXVn':_0x35ab29(0x25a)+_0x35ab29(0x1ee),'HgNwq':function(_0x5fc3e5,_0x18cf08){return _0x5fc3e5===_0x18cf08;},'kAUCU':_0x35ab29(0x223)+_0x35ab29(0x26d),'FmCZq':function(_0x3d9d2b,_0x2d2c64){return _0x3d9d2b===_0x2d2c64;},'qQfql':_0x35ab29(0x212),'yOeFE':_0x35ab29(0x312)+_0x35ab29(0x23a)+_0x35ab29(0x23b),'KGNyd':_0x35ab29(0x20e)+_0x35ab29(0x24e)+_0x35ab29(0x280),'kuPhz':_0x35ab29(0x2c7)+_0x35ab29(0x26b),'MGEpz':function(_0x263945,_0x1acc89,_0x874301){return _0x263945(_0x1acc89,_0x874301);},'NkTtp':_0x35ab29(0x25f),'OqEzR':function(_0x5c3800,_0x562946){return _0x5c3800(_0x562946);},'HHBxE':function(_0x9f8016,_0x47816e){return _0x9f8016(_0x47816e);},'dDeai':_0x35ab29(0x20c)+_0x35ab29(0x30b),'QlBtx':_0x35ab29(0x249),'pKXKN':_0x35ab29(0x1d8),'hscAc':_0x35ab29(0x2f6),'rIVHV':_0x35ab29(0x2a5)+_0x35ab29(0x27d)+_0x35ab29(0x1ea)+_0x35ab29(0x237)+'.','VQjCr':_0x35ab29(0x291)+_0x35ab29(0x2ac)+_0x35ab29(0x213),'hkKwO':function(_0x56e649,_0x22748e,_0x49939f,_0x57d232){return _0x56e649(_0x22748e,_0x49939f,_0x57d232);},'IqHqM':_0x35ab29(0x21c)+_0x35ab29(0x1f6),'pnxHC':_0x35ab29(0x2e5)+_0x35ab29(0x213),'ZWUjM':function(_0x9e0f05,_0x40d303){return _0x9e0f05===_0x40d303;},'KWfkp':_0x35ab29(0x2b2)+'k','sLkwl':function(_0x26b036,_0x161693){return _0x26b036(_0x161693);},'xzTrW':function(_0x13d78e,_0x9d6088){return _0x13d78e(_0x9d6088);},'CKKrO':_0x35ab29(0x1e0)+'g','YSzeG':_0x35ab29(0x24b)+_0x35ab29(0x205),'uVThy':function(_0x227123,_0x1ef1ff){return _0x227123*_0x1ef1ff;},'srMIA':_0x35ab29(0x2a6)+_0x35ab29(0x200)+_0x35ab29(0x2e1)+_0x35ab29(0x306),'LDKtd':function(_0x42d532,_0x3dac7a){return _0x42d532(_0x3dac7a);},'rDaoY':_0x35ab29(0x2a6)+_0x35ab29(0x1d4)+_0x35ab29(0x1e2)+_0x35ab29(0x263)+_0x35ab29(0x207),'umXao':_0x35ab29(0x314)+_0x35ab29(0x297)+_0x35ab29(0x224)+':','auhJb':_0x35ab29(0x2c7)+_0x35ab29(0x315)+_0x35ab29(0x265)+'t'};function _0x1d737b(_0x43d066){const _0x3979c9=_0x35ab29;try{const _0x37188c=new URL(_0x43d066),_0x2c9d44=_0x37188c[_0x3979c9(0x2a7)][_0x3979c9(0x313)]('/');if(_0x2e00d2[_0x3979c9(0x2de)](_0x2c9d44[_0x3979c9(0x22b)],0x1bfa+0x185*-0x9+0x1e*-0x7a))return _0x2c9d44[-0x21ff+0x1011+0x11ef];return null;}catch(_0xc71aa6){return null;}}const _0x1e78ec=_0x2e00d2[_0x35ab29(0x1f8)](_0x1d737b,_0x87ca31);async function _0x1e157b(_0x3488a9){const _0x1232d1=_0x35ab29,_0x3cbd7b=await _0x2e00d2[_0x1232d1(0x2fa)](_0x3f4131,_0x3488a9);return _0x3cbd7b?(_0x3cbd7b[_0x1232d1(0x2b8)]?_0x2e00d2[_0x1232d1(0x1e8)](copyconfig)[_0x1232d1(0x31b)]?(_0x2e00d2[_0x1232d1(0x1f8)](GM_setClipboard,_0x3cbd7b[_0x1232d1(0x2b8)]),await _0x2e00d2[_0x1232d1(0x2f4)](notifyUser,_0x2e00d2[_0x1232d1(0x2b1)],_0x3cbd7b[_0x1232d1(0x2b8)],_0x2e00d2[_0x1232d1(0x239)](-0x594*0x3+0x25a*0x1+0xe9e,0x33*-0x68+-0xb6a+-0xe*-0x293),![],_0x3cbd7b[_0x1232d1(0x2b8)])):(console[_0x1232d1(0x1f4)](_0x1232d1(0x235)+_0x1232d1(0x2c8)),await _0x2e00d2[_0x1232d1(0x27b)](notifyUser,_0x2e00d2[_0x1232d1(0x303)],_0x3cbd7b[_0x1232d1(0x2b8)],_0x2e00d2[_0x1232d1(0x2c5)](0x11ab*-0x1+0xc6f+0x578,0x119e+-0xa3*0x3+0x3*-0x3ef),![],_0x3cbd7b[_0x1232d1(0x2b8)])):await _0x2e00d2[_0x1232d1(0x2f4)](notifyUser,_0x2e00d2[_0x1232d1(0x238)],_0x2e00d2[_0x1232d1(0x2f2)],_0x2e00d2[_0x1232d1(0x2ce)](0x1*0x222f+-0x5*-0x5e2+0x1*-0x3f8f,0xcd*-0x7+-0x1fd3*-0x1+-0x770*0x3),null,_0x2e00d2[_0x1232d1(0x2f2)]),!![]):![];}async function _0x3f4131(_0x58e8ae){const _0x22962=_0x35ab29,_0x5878b3=_0x2e00d2[_0x22962(0x2af)](_0x1d737b,_0x58e8ae);if(_0x5878b3){const _0x578632=new URL(_0x58e8ae),_0x9e786=_0x578632[_0x22962(0x253)],_0x2f8fa7=_0x22962(0x1e3)+_0x9e786+(_0x22962(0x217)+_0x22962(0x279)+_0x22962(0x24c))+_0x5878b3;try{const _0x3c777b=await _0x2e00d2[_0x22962(0x2a8)](fetch,_0x2f8fa7,{'method':_0x2e00d2[_0x22962(0x2db)],'headers':{'Content-Type':_0x2e00d2[_0x22962(0x2ba)]}});if(!_0x3c777b['ok'])throw new Error(_0x22962(0x317)+_0x22962(0x2a3)+_0x3c777b[_0x22962(0x219)]);const _0x337989=await _0x3c777b[_0x22962(0x222)]();if(_0x337989[_0x22962(0x284)]&&_0x337989[_0x22962(0x284)][_0x22962(0x311)]){if(_0x2e00d2[_0x22962(0x281)](_0x337989[_0x22962(0x284)][_0x22962(0x311)],_0x2e00d2[_0x22962(0x2e4)])||_0x2e00d2[_0x22962(0x28c)](_0x337989[_0x22962(0x284)][_0x22962(0x31a)+'t'],-0xe37+0x1805+-0x9ce))return![];else{if(_0x337989[_0x22962(0x284)][_0x22962(0x311)][_0x22962(0x1f0)](_0x2e00d2[_0x22962(0x283)])||_0x2e00d2[_0x22962(0x2de)](_0x337989[_0x22962(0x284)][_0x22962(0x31a)+'t'],0x1a9b*-0x1+0x2b*-0x32+-0x67*-0x57))return{'res':_0x337989[_0x22962(0x284)][_0x22962(0x311)]};}}else{if(_0x337989[_0x22962(0x1fe)][_0x22962(0x221)](_0x2e00d2[_0x22962(0x30f)]))return{'res':![]};}}catch(_0x50f9fb){console[_0x22962(0x1f4)](_0x2e00d2[_0x22962(0x285)],_0x50f9fb);}}else console[_0x22962(0x1f4)](_0x2e00d2[_0x22962(0x261)]);}async function _0x52e884(_0x45d1ea){const _0x225551=_0x35ab29,_0x22fbc2=_0x2e00d2[_0x225551(0x2fa)](_0x1d737b,_0x45d1ea);if(_0x22fbc2){const _0x1e27fc=new URL(_0x45d1ea),_0x1ff9af=_0x1e27fc[_0x225551(0x253)],_0x4a16af=_0x225551(0x1e3)+_0x1ff9af+(_0x225551(0x217)+_0x225551(0x1dd)+_0x225551(0x2d3))+_0x22fbc2;try{const _0x4cfde0=await _0x2e00d2[_0x225551(0x2a1)](fetch,_0x4a16af,{'method':_0x2e00d2[_0x225551(0x2db)],'headers':{'Content-Type':_0x2e00d2[_0x225551(0x2ba)]}});if(!_0x4cfde0['ok'])throw new Error(_0x225551(0x317)+_0x225551(0x2a3)+_0x4cfde0[_0x225551(0x219)]);const _0x309693=await _0x4cfde0[_0x225551(0x222)](),_0x1f4fc3=_0x309693[_0x225551(0x284)];return _0x1f4fc3;}catch(_0x28a2e2){console[_0x225551(0x1f4)](_0x2e00d2[_0x225551(0x26f)],_0x28a2e2);}}}if(await _0x2e00d2[_0x35ab29(0x1fc)](_0x1e157b,_0x87ca31))return;if(_0x1e78ec){const _0x555d47=await _0x2e00d2[_0x35ab29(0x2eb)](_0x52e884,_0x87ca31),_0x1a25c6=_0x555d47[_0x2e00d2[_0x35ab29(0x232)]][_0x2e00d2[_0x35ab29(0x1ec)]],_0x39b337=new URL(_0x87ca31),_0x4c06c7=_0x39b337[_0x35ab29(0x253)],_0x95173d=_0x35ab29(0x1e3)+_0x4c06c7+(_0x35ab29(0x217)+_0x35ab29(0x230)+_0x35ab29(0x1e7))+_0x1e78ec+_0x35ab29(0x22f)+_0x1a25c6;try{const _0x58d127=await _0x2e00d2[_0x35ab29(0x2a8)](fetch,_0x95173d,{'method':_0x2e00d2[_0x35ab29(0x2c1)],'headers':{'Content-Type':_0x2e00d2[_0x35ab29(0x2ba)]},'body':JSON[_0x35ab29(0x256)]({'captcha':null,'reference':_0x2e00d2[_0x35ab29(0x1fd)],'payload':_0x2e00d2[_0x35ab29(0x1fd)]})});if(!_0x58d127['ok'])throw new Error(_0x35ab29(0x317)+_0x35ab29(0x2a3)+_0x58d127[_0x35ab29(0x219)]);const _0x1475f2=await _0x58d127[_0x35ab29(0x222)]();if(!_0x1475f2[_0x35ab29(0x244)]&&_0x1475f2[_0x35ab29(0x1fe)][_0x35ab29(0x221)](_0x2e00d2[_0x35ab29(0x1fb)])){window[_0x35ab29(0x1cb)][_0x35ab29(0x2df)]();return;}else{if(_0x1475f2[_0x35ab29(0x244)]&&_0x1475f2[_0x35ab29(0x1fe)][_0x35ab29(0x221)](_0x2e00d2[_0x35ab29(0x1fa)])){_0x2e00d2[_0x35ab29(0x309)](notifyUser,_0x2e00d2[_0x35ab29(0x290)],_0x2e00d2[_0x35ab29(0x2f8)],0x1327+-0x482+-0x2ed);return;}}const _0x286470=_0x1475f2[_0x35ab29(0x284)][_0x35ab29(0x20d)];if(_0x2e00d2[_0x35ab29(0x2a0)](_0x286470,_0x2e00d2[_0x35ab29(0x308)])){if(await _0x2e00d2[_0x35ab29(0x248)](_0x1e157b,window[_0x35ab29(0x1cb)][_0x35ab29(0x2f9)]))return;else{_0x2e00d2[_0x35ab29(0x2af)](handlePlatoboost,window[_0x35ab29(0x1cb)][_0x35ab29(0x2f9)]);return;}}const _0x418f3f=await _0x2e00d2[_0x35ab29(0x1d2)](bypassRequest,_0x286470);await _0x2e00d2[_0x35ab29(0x309)](notifyUser,_0x2e00d2[_0x35ab29(0x304)],_0x2e00d2[_0x35ab29(0x23e)],_0x2e00d2[_0x35ab29(0x299)](0x2*-0x41+-0x2350+0x9*0x3fb+0.5,-0x1*0x1ee9+-0xdc9+0x309a));if(_0x418f3f&&_0x418f3f[_0x35ab29(0x1d0)]){window[_0x35ab29(0x1cb)][_0x35ab29(0x2f9)]=_0x418f3f[_0x35ab29(0x1d0)];if(await _0x2e00d2[_0x35ab29(0x1f8)](_0x1e157b,window[_0x35ab29(0x1cb)][_0x35ab29(0x2f9)]))return;else{_0x2e00d2[_0x35ab29(0x2fa)](handlePlatoboost,window[_0x35ab29(0x1cb)][_0x35ab29(0x2f9)]);return;}}else console[_0x35ab29(0x1db)](_0x2e00d2[_0x35ab29(0x31c)],_0x418f3f),_0x2e00d2[_0x35ab29(0x26a)](alert,_0x2e00d2[_0x35ab29(0x274)]);}catch(_0x412123){console[_0x35ab29(0x1db)](_0x2e00d2[_0x35ab29(0x2ab)],_0x412123);}}else console[_0x35ab29(0x1f4)](_0x2e00d2[_0x35ab29(0x2fd)]);}async function handleCodex(){const _0x16884f=_0x2a1fb9,_0x4743e2={'bWPUs':function(_0x3de97e,_0x339d00,_0x18c431){return _0x3de97e(_0x339d00,_0x18c431);},'wyCVk':_0x16884f(0x2bc)+_0x16884f(0x2fe)+_0x16884f(0x2a9)+_0x16884f(0x27f),'jYgIr':_0x16884f(0x2bb),'snpei':_0x16884f(0x1de)+_0x16884f(0x2b7),'whiCJ':_0x16884f(0x2bc)+_0x16884f(0x2fe)+_0x16884f(0x2a9)+_0x16884f(0x2ea),'EAbNp':_0x16884f(0x1c6),'vSDpY':_0x16884f(0x25a)+_0x16884f(0x1ee),'QbFLx':_0x16884f(0x1de)+_0x16884f(0x2fc)+_0x16884f(0x316),'ZhzNV':function(_0x1cd822,_0x4a28c4,_0x5adb5a){return _0x1cd822(_0x4a28c4,_0x5adb5a);},'DnXqh':_0x16884f(0x2bc)+_0x16884f(0x2fe)+_0x16884f(0x2a9)+_0x16884f(0x2e6),'WgbVL':_0x16884f(0x1de)+_0x16884f(0x271)+_0x16884f(0x316),'QktVl':function(_0x25086a,_0x44044a,_0xcf6e44){return _0x25086a(_0x44044a,_0xcf6e44);},'wSbZu':_0x16884f(0x2bc)+_0x16884f(0x2fe)+_0x16884f(0x2a9)+_0x16884f(0x319)+_0x16884f(0x208),'zoNWy':_0x16884f(0x1de)+_0x16884f(0x27e)+'te','lzrYU':function(_0x307dde,_0x59657a){return _0x307dde(_0x59657a);},'wbCSd':_0x16884f(0x24f)+_0x16884f(0x2ad),'ribEV':function(_0x1e2c84,_0x1b5245){return _0x1e2c84(_0x1b5245);},'FkCwv':_0x16884f(0x259)+'d','FRoFk':function(_0x7f08c0){return _0x7f08c0();},'ocBnM':function(_0x1586df,_0x47a2cd){return _0x1586df<_0x47a2cd;},'MjIvQ':function(_0x5b5ca2,_0x32c1a8){return _0x5b5ca2==_0x32c1a8;},'npmAt':_0x16884f(0x27c)+_0x16884f(0x2c3),'UFOQA':function(_0x13f379,_0x1ff5bf,_0x37da58,_0x4ea46,_0x32f097,_0x30f282){return _0x13f379(_0x1ff5bf,_0x37da58,_0x4ea46,_0x32f097,_0x30f282);},'mDAjS':_0x16884f(0x26c)+_0x16884f(0x2be)+_0x16884f(0x25c),'STbju':function(_0x52c9fa,_0x4996c4){return _0x52c9fa*_0x4996c4;},'exhKb':function(_0x20929e,_0x4a62a7){return _0x20929e(_0x4a62a7);},'jxhCa':_0x16884f(0x2c2),'AhPap':_0x16884f(0x240)+_0x16884f(0x2f1)+_0x16884f(0x289),'PyfpH':_0x16884f(0x2f5),'fhoQc':_0x16884f(0x240)+_0x16884f(0x30e)+'m/','IPzET':_0x16884f(0x1e9)+_0x16884f(0x28f)+_0x16884f(0x2e2),'WjMIW':function(_0x272207,_0x40a487,_0x33e011){return _0x272207(_0x40a487,_0x33e011);},'xsuow':function(_0x24072b,_0x3bd411,_0x2cf662,_0x3e7b72){return _0x24072b(_0x3bd411,_0x2cf662,_0x3e7b72);},'BpLCe':function(_0xd835c4,_0x7607e4){return _0xd835c4+_0x7607e4;},'nPeeb':function(_0x1100ed,_0x459b02){return _0x1100ed(_0x459b02);},'aLPaZ':function(_0x4b697b,_0x23a1ef,_0x42517d,_0x56fde3){return _0x4b697b(_0x23a1ef,_0x42517d,_0x56fde3);},'KXVbT':_0x16884f(0x2ec)+_0x16884f(0x2b4)+'y','JrSPE':_0x16884f(0x1e6)+_0x16884f(0x21e),'gkiuZ':function(_0x466bc5,_0x45d6c7,_0x132acd,_0x4750a8){return _0x466bc5(_0x45d6c7,_0x132acd,_0x4750a8);},'dcYDt':_0x16884f(0x242),'dptTc':function(_0x2d151d,_0x2ae0a5){return _0x2d151d(_0x2ae0a5);}};let _0x43e901;while(!_0x43e901){_0x43e901=localStorage[_0x16884f(0x247)](_0x4743e2[_0x16884f(0x25b)]),await _0x4743e2[_0x16884f(0x211)](sleep,-0x1a5a+0x2414*0x1+-0x5d2);}document?.[_0x16884f(0x215)+_0x16884f(0x264)]('a')?.[_0x16884f(0x22b)]&&document[_0x16884f(0x215)+_0x16884f(0x264)]('a')[0x5cd+0x542*0x1+-0xb0f]&&document[_0x16884f(0x215)+_0x16884f(0x264)]('a')[0xfb5+0x2f*-0xbb+0x12a0][_0x16884f(0x243)][_0x16884f(0x221)](_0x4743e2[_0x16884f(0x22d)])&&document[_0x16884f(0x215)+_0x16884f(0x264)]('a')[-0x1f51+-0x1ca2+0x3bf3][_0x16884f(0x2e8)]();async function _0x4a3268(){const _0x242f16=_0x16884f;let _0x4b97f4=await _0x4743e2[_0x242f16(0x30a)](fetch,_0x4743e2[_0x242f16(0x20f)],{'method':_0x4743e2[_0x242f16(0x246)],'headers':{'Android-Session':_0x43e901}}),_0xf7c3ce=await _0x4b97f4[_0x242f16(0x222)]();if(_0xf7c3ce[_0x242f16(0x244)]){if(_0xf7c3ce[_0x242f16(0x27e)+_0x242f16(0x1ff)])return[];return _0xf7c3ce[_0x242f16(0x22e)];}else throw new Error(_0x4743e2[_0x242f16(0x29f)]);}async function _0x10ffbd(_0x494a58){const _0x1b5d36=_0x16884f;let _0x1f693b=await _0x4743e2[_0x1b5d36(0x30a)](fetch,_0x4743e2[_0x1b5d36(0x241)],{'method':_0x4743e2[_0x1b5d36(0x273)],'headers':{'Android-Session':_0x43e901,'Content-Type':_0x4743e2[_0x1b5d36(0x2aa)]},'body':JSON[_0x1b5d36(0x256)]({'stageId':_0x494a58})}),_0x460e68=await _0x1f693b[_0x1b5d36(0x222)]();if(_0x460e68[_0x1b5d36(0x244)])return _0x460e68[_0x1b5d36(0x2e0)];else throw new Error(_0x4743e2[_0x1b5d36(0x2f7)]);}async function _0x34b740(_0x1db281,_0x3980e7){const _0xc11105=_0x16884f;let _0x846013=await _0x4743e2[_0xc11105(0x292)](fetch,_0x4743e2[_0xc11105(0x2ef)],{'method':_0x4743e2[_0xc11105(0x273)],'headers':{'Android-Session':_0x43e901,'Content-Type':_0x4743e2[_0xc11105(0x2aa)],'Task-Referrer':_0x3980e7},'body':JSON[_0xc11105(0x256)]({'token':_0x1db281})}),_0x1db898=await _0x846013[_0xc11105(0x222)]();if(_0x1db898[_0xc11105(0x244)])return _0x1db898[_0xc11105(0x2e0)];else throw new Error(_0x4743e2[_0xc11105(0x1ef)]);}async function _0x4b40f4(_0x2fb39a){const _0x299afa=_0x16884f;let _0x3cc265=await _0x4743e2[_0x299afa(0x2da)](fetch,_0x4743e2[_0x299afa(0x2b9)],{'method':_0x4743e2[_0x299afa(0x273)],'headers':{'Android-Session':_0x43e901,'Content-Type':_0x4743e2[_0x299afa(0x2aa)]},'body':JSON[_0x299afa(0x256)]({'tokens':_0x2fb39a})}),_0x5740dc=await _0x3cc265[_0x299afa(0x222)]();if(_0x5740dc[_0x299afa(0x244)])return!![];else throw new Error(_0x4743e2[_0x299afa(0x272)]);}function _0x31d95b(_0x5d82e3){const _0x3466e3=_0x16884f;let _0x2d815a=_0x5d82e3[_0x3466e3(0x313)]('.')[0xca7+0x477+-0x111d];return _0x2d815a=_0x4743e2[_0x3466e3(0x22a)](base64decode,_0x2d815a),JSON[_0x3466e3(0x251)](_0x2d815a);}let _0x4c27c0=await _0x4743e2[_0x16884f(0x1da)](_0x4a3268),_0x3ccdec=0x2fa*-0x8+0x4*0x51b+0x364*0x1;while(localStorage[_0x16884f(0x247)](_0x4c27c0[_0x3ccdec])&&_0x4743e2[_0x16884f(0x260)](_0x3ccdec,_0x4c27c0[_0x16884f(0x22b)])){_0x3ccdec++;}if(_0x4743e2[_0x16884f(0x245)](_0x3ccdec,_0x4c27c0[_0x16884f(0x22b)])){const _0x1bde9f=document[_0x16884f(0x1f7)+_0x16884f(0x2bd)](_0x4743e2[_0x16884f(0x28a)])[_0x16884f(0x302)+'t'];_0x1bde9f&&_0x4743e2[_0x16884f(0x1c8)](notifyUser,_0x4743e2[_0x16884f(0x1f5)],'',_0x4743e2[_0x16884f(0x29b)](-0x21dc+-0x170f+-0x38f5*-0x1,-0x1736+0x1*0x1537+-0x1*-0x5e7),null,_0x4743e2[_0x16884f(0x1f5)]);return;}let _0x43d61a=[];try{while(_0x4743e2[_0x16884f(0x260)](_0x3ccdec,_0x4c27c0[_0x16884f(0x22b)])){let _0xe781c0=_0x4c27c0[_0x3ccdec][_0x16884f(0x1f2)],_0x1998e4=await _0x4743e2[_0x16884f(0x21f)](_0x10ffbd,_0xe781c0);await _0x4743e2[_0x16884f(0x22a)](sleep,-0x2073+0xcec+0x2af7);let _0xaaf41b=_0x4743e2[_0x16884f(0x211)](_0x31d95b,_0x1998e4),_0x5834c1;if(_0xaaf41b[_0x16884f(0x2d6)][_0x16884f(0x221)](_0x4743e2[_0x16884f(0x1c9)]))_0x5834c1=_0x4743e2[_0x16884f(0x202)];else _0xaaf41b[_0x16884f(0x2d6)][_0x16884f(0x221)](_0x4743e2[_0x16884f(0x2cc)])?_0x5834c1=_0x4743e2[_0x16884f(0x318)]:_0x5834c1=_0x4743e2[_0x16884f(0x286)];let _0x20c6ee=await _0x4743e2[_0x16884f(0x226)](_0x34b740,_0x1998e4,_0x5834c1);_0x43d61a[_0x16884f(0x2f3)]({'uuid':_0xe781c0,'token':_0x20c6ee}),_0x4743e2[_0x16884f(0x29e)](notifyUser,_0x16884f(0x2d0)+_0x16884f(0x301),_0x4743e2[_0x16884f(0x1d5)](_0x3ccdec,0x101*0x6+-0x373+0x2f*-0xe)+'/'+_0x4c27c0[_0x16884f(0x22b)]+_0x16884f(0x24a),0xc8d+0x700+-0x5*0x1),await _0x4743e2[_0x16884f(0x22a)](sleep,-0x419*0x5+-0x1cbb+0x3714),_0x3ccdec++;}_0x4743e2[_0x16884f(0x2e7)](_0x4b40f4,_0x43d61a)&&(_0x4743e2[_0x16884f(0x31d)](notifyUser,_0x4743e2[_0x16884f(0x1f9)],_0x4743e2[_0x16884f(0x255)],-0x5cb*-0x3+0x10f6+-0x169f),await _0x4743e2[_0x16884f(0x22a)](sleep,0x5fb*0x2+-0xa61*-0x1+0x1*-0xa9f),window[_0x16884f(0x1cb)][_0x16884f(0x2df)]());}catch(_0x2308b6){_0x4743e2[_0x16884f(0x2c6)](notifyUser,_0x4743e2[_0x16884f(0x30d)],_0x2308b6,0x410*-0xb+-0x302+0x4b0a),_0x4743e2[_0x16884f(0x1cf)](handleError,_0x2308b6);}}var pageTitle=document[_0x2a1fb9(0x2b3)];function _0x46d2(_0x11dd65,_0x4f7255){const _0xb571f5=_0x21a2();return _0x46d2=function(_0x326368,_0x146a24){_0x326368=_0x326368-(0x2692+-0x51*0x70+-0x15c);let _0x377966=_0xb571f5[_0x326368];return _0x377966;},_0x46d2(_0x11dd65,_0x4f7255);}const url=window[_0x2a1fb9(0x1cb)][_0x2a1fb9(0x2f9)];var arceusNewURL=url[_0x2a1fb9(0x2fb)](_0x2a1fb9(0x1e9)+_0x2a1fb9(0x28f)+_0x2a1fb9(0x1e1)+_0x2a1fb9(0x22c)+_0x2a1fb9(0x1dc)+_0x2a1fb9(0x1d9)+_0x2a1fb9(0x2d2),_0x2a1fb9(0x240)+_0x2a1fb9(0x1ed)+_0x2a1fb9(0x2bf)),ARCEUS_API=_0x2a1fb9(0x203)+_0x2a1fb9(0x1df)+_0x2a1fb9(0x1f3)+_0x2a1fb9(0x1c7);async function start(){const _0x1785cc=_0x2a1fb9,_0x2a0db6={'MExUP':function(_0x4c908d){return _0x4c908d();},'zQuXi':function(_0x293026,_0x46b9f2,_0x571fac,_0x349c8c){return _0x293026(_0x46b9f2,_0x571fac,_0x349c8c);},'WqSqq':_0x1785cc(0x1d1)+_0x1785cc(0x216),'laTDL':function(_0x25fd17,_0x5dbcc6){return _0x25fd17*_0x5dbcc6;},'bxoBW':_0x1785cc(0x300)+_0x1785cc(0x2cf)+_0x1785cc(0x296),'jrHEr':_0x1785cc(0x300)+_0x1785cc(0x2cf)+_0x1785cc(0x295),'vgSwl':function(_0x47737a,_0x4e267f){return _0x47737a(_0x4e267f);},'tIkMR':_0x1785cc(0x2ed)+_0x1785cc(0x266)+_0x1785cc(0x20b),'Gfpou':_0x1785cc(0x1e9)+_0x1785cc(0x28f)+_0x1785cc(0x1e1)+_0x1785cc(0x22c)+_0x1785cc(0x1dc)+_0x1785cc(0x1d9)+_0x1785cc(0x2d2),'Bknja':_0x1785cc(0x1cd),'SfjnV':function(_0x23bdb0,_0x217df3){return _0x23bdb0+_0x217df3;},'ajPbX':_0x1785cc(0x227)+_0x1785cc(0x29a)+_0x1785cc(0x1e5)+'s','vADsw':_0x1785cc(0x203)+_0x1785cc(0x1df)+_0x1785cc(0x26e)+_0x1785cc(0x257),'BlSNq':_0x1785cc(0x240)+_0x1785cc(0x30e)+_0x1785cc(0x24d),'RpIJP':_0x1785cc(0x203)+_0x1785cc(0x1df)+_0x1785cc(0x1f3)+_0x1785cc(0x1c7)+_0x1785cc(0x287)+_0x1785cc(0x29a)+_0x1785cc(0x1e5)+'s','IwiPe':_0x1785cc(0x203)+_0x1785cc(0x1df)+_0x1785cc(0x26e)+_0x1785cc(0x2e9),'drxCX':_0x1785cc(0x240)+_0x1785cc(0x30e)+_0x1785cc(0x21d),'oZSZx':_0x1785cc(0x203)+_0x1785cc(0x1df)+_0x1785cc(0x1f3)+_0x1785cc(0x1c7)+_0x1785cc(0x231)+_0x1785cc(0x29a)+_0x1785cc(0x1e5)+'s','QhhTr':_0x1785cc(0x203)+_0x1785cc(0x1df)+_0x1785cc(0x26e)+_0x1785cc(0x2a2),'RFeLt':function(_0x13f202,_0x52d366,_0x2839e7,_0x26c026,_0x54289c,_0x1340fa){return _0x13f202(_0x52d366,_0x2839e7,_0x26c026,_0x54289c,_0x1340fa);},'zRUto':_0x1785cc(0x305)+_0x1785cc(0x210),'HSDpO':_0x1785cc(0x2d8)+_0x1785cc(0x277)+'!','oRcAI':function(_0x20e542,_0x52be99){return _0x20e542*_0x52be99;}},_0x96a59d=await _0x2a0db6[_0x1785cc(0x228)](checkapikey);if(!_0x96a59d){_0x2a0db6[_0x1785cc(0x2c9)](notifyUser,_0x2a0db6[_0x1785cc(0x225)],'',_0x2a0db6[_0x1785cc(0x29c)](-0x1ebd+0x3c7*-0x8+0x3cff,0x80*-0x40+-0x6fd+-0x2ae5*-0x1));return;}if(url[_0x1785cc(0x1f0)](_0x2a0db6[_0x1785cc(0x278)])||url[_0x1785cc(0x1f0)](_0x2a0db6[_0x1785cc(0x2dd)])){_0x2a0db6[_0x1785cc(0x23f)](handlePlatoboost,url);return;}else{if(url[_0x1785cc(0x1f0)](_0x2a0db6[_0x1785cc(0x275)]))_0x2a0db6[_0x1785cc(0x228)](handleCodex);else{if(url[_0x1785cc(0x221)](_0x2a0db6[_0x1785cc(0x1eb)]))window[_0x1785cc(0x1cb)][_0x1785cc(0x2fb)](arceusNewURL);else{if(pageTitle[_0x1785cc(0x221)](_0x2a0db6[_0x1785cc(0x220)])&&pageTitle[_0x1785cc(0x221)]('1'))window[_0x1785cc(0x1cb)][_0x1785cc(0x2f9)]=_0x2a0db6[_0x1785cc(0x2ca)](ARCEUS_API,_0x2a0db6[_0x1785cc(0x269)]);else{if(url[_0x1785cc(0x221)](_0x2a0db6[_0x1785cc(0x2cd)]))window[_0x1785cc(0x1cb)][_0x1785cc(0x2fb)](_0x2a0db6[_0x1785cc(0x298)]);else{if(pageTitle[_0x1785cc(0x221)](_0x2a0db6[_0x1785cc(0x220)])&&pageTitle[_0x1785cc(0x221)]('2'))window[_0x1785cc(0x1cb)][_0x1785cc(0x2fb)](_0x2a0db6[_0x1785cc(0x2c0)]);else{if(url[_0x1785cc(0x221)](_0x2a0db6[_0x1785cc(0x2cb)]))window[_0x1785cc(0x1cb)][_0x1785cc(0x2fb)](_0x2a0db6[_0x1785cc(0x2ee)]);else{if(pageTitle[_0x1785cc(0x221)](_0x2a0db6[_0x1785cc(0x220)])&&pageTitle[_0x1785cc(0x221)]('3'))window[_0x1785cc(0x1cb)][_0x1785cc(0x2fb)](_0x2a0db6[_0x1785cc(0x2f0)]);else url[_0x1785cc(0x221)](_0x2a0db6[_0x1785cc(0x25e)])&&_0x2a0db6[_0x1785cc(0x236)](notifyUser,_0x2a0db6[_0x1785cc(0x2b6)],_0x2a0db6[_0x1785cc(0x1e4)],_0x2a0db6[_0x1785cc(0x21b)](0xd85*-0x1+0x1*-0x11f2+0x657*0x5,0x64*0x5e+0x1*-0x27a+-0x1e56*0x1),![],_0x2a0db6[_0x1785cc(0x1e4)]);}}}}}}}}(function(){const _0x19e91a=_0x2a1fb9,_0x46e65a={'JXWqd':function(_0x256abc){return _0x256abc();}};_0x46e65a[_0x19e91a(0x20a)](start);}());
+if (document.title == 'Just a moment...') {
+    return;
+}
+
+async function checkapikey() {
+    try {
+        const response = await fetch(`https://api.gabcode.dev/key`, {
+            method: 'GET',
+            headers: { 
+                'Content-Type': 'application/json',
+                'x-api-key': config().apikey
+            }
+        });
+        if (!response.ok) {
+            const errorText = await response.text(); // Get error details
+            console.error(`API key check failed: ${response.status} - ${errorText}`);
+            return false; // Or throw an error if you prefer
+        }
+        const data = await response.json(); // Parse JSON response
+        return true; // Or return data if needed
+
+    } catch (error) {
+        console.error("Error checking API key:", error); // Network or other error
+        return false;
+    }
+}
+
+async function bypassRequest(url) {
+    try {
+        const response = await fetch(`https://api.gabcode.dev/bypass?url=${encodeURIComponent(url)}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-api-key': config().apikey
+            }
+        });
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error(`API request failed:`, response.status, errorText);
+            throw new Error(`Bypass failed: API error (${response.status} - ${errorText})`);
+        }
+        const data = await response.json();
+        if (data) {
+            return data; // returns data.result and data.success
+        } else {
+            console.error("Result or Status missing. Response:", data);
+            throw new Error("Bypass failed: Result or Status missing."); // Don't retry on this error
+        }
+    } catch (err) {
+        console.log(err);
+        throw err; // Re-throw, either max retries reached or it's not an API error
+    }
+}
+
+async function handlePlatoboost(url) { // Async function for Platoboost
+    function extractPlatoTicket(url) {
+        try {
+            const urlObj = new URL(url);
+            const pathParts = urlObj.pathname.split('/');
+            if (pathParts.length > 1) {
+                return pathParts[1];
+            }
+            return null;
+        } catch (error) {
+            return null;
+        }
+    }
+
+    const ticket = extractPlatoTicket(url);
+
+    async function handlePlatoboostKeyCheck(url) {
+        const data = await checkPlatoboostStatus(url);
+        if (data) {
+            if (data.res) {
+                if (copyconfig().platoboost) {
+                    GM_setClipboard(data.res);
+                    await notifyUser("Copied Key", data.res, 60 * 1000, false, data.res);
+                } else {
+                    console.log(`Already got key!`);
+                    await notifyUser("Got Key", data.res, 60 * 1000, false, data.res);
+                }
+            } else {
+                await notifyUser("Expired Link Detected", "Bypass Failed, Request for a new link.", 10 * 1000, null, "Bypass Failed, Request for a new link.");
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    async function checkPlatoboostStatus(url) {
+        const ticket = extractPlatoTicket(url);
+        if (ticket) {
+            const urlObj = new URL(url);
+            const domain = urlObj.hostname;
+            const apiUrl = `https://${domain}/api/session/status?ticket=${ticket}`;
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                });
+    
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+    
+                const responseData = await response.json();
+                if (responseData.data && responseData.data.key) {
+                    if (responseData.data.key === "KEY_NOT_FOUND" || responseData.data.minutesLeft === 0) {
+                        return false;
+                    } else if (responseData.data.key.startsWith("FREE_") || responseData.data.minutesLeft > 0) {
+                        return {
+                            res: responseData.data.key
+                        };
+                    }
+                } else if (responseData.message.includes('claim timestamp check failed')) {
+                    return {
+                        res: false
+                    };
+                }
+            } catch (Error) {
+                console.log("Error Check Platoboost Status:", Error);
+            }
+        } else {
+            console.log("Failed to get Ticket");
+        }
+    }
+    
+    async function getMetaDataPlatoboost(url) {
+        const ticket = extractPlatoTicket(url);
+        if (ticket) {
+            const urlObj = new URL(url);
+            const domain = urlObj.hostname;
+            const apiUrl = `https://${domain}/api/session/metadata?ticket=${ticket}`;
+            try {
+                const response = await fetch(apiUrl, { // Await fetch
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                });
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const responseData = await response.json(); // Await JSON parsing
+                const data = responseData.data;
+                return data;
+            } catch (error) {
+                console.log("Error: ", error);
+            }
+        }
+    }
+
+    if (await handlePlatoboostKeyCheck(url)) {
+        return;
+    }
+
+    if (ticket) {
+        const metadata = await getMetaDataPlatoboost(url);
+        // const checkpoints = metadata['activeRevenueProfile']['checkpointCount'];
+        // const completed = metadata['completed'];
+        const currentService = metadata['activeRevenueProfile']['service'];
+        // This means completed/checkpoints so possibly 0/1 OR 0/2 (2 checkpoints to check)
+        const urlObj = new URL(url);
+        const domain = urlObj.hostname;
+        const apiUrl = `https://${domain}/api/session/step?ticket=${ticket}&service=${currentService}`;
+        try {
+            const response = await fetch(apiUrl, { // Await fetch
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    captcha: null,
+                    reference: "empty",
+                    payload: "empty"
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+
+            const data = await response.json();
+            if (!data.success && data.message.includes('a key for this identifier already exists.')) {
+                window.location.reload();
+                return;
+            } else if (data.success && data.message.includes('please complete the captcha')) {
+                notifyUser("Captcha Detected", "Solve the captcha", 3000);
+                return;
+            }
+
+            const linkToBypass = data.data.url;
+            if (linkToBypass === "about:blank") {
+                if (await handlePlatoboostKeyCheck(window.location.href)) {
+                    return;
+                } else {
+                    handlePlatoboost(window.location.href);
+                    return;
+                }
+            }
+
+            const bypassed = await bypassRequest(linkToBypass); // Await bypassLink
+
+            await notifyUser("Redirecting", "Moving to a new URL", 1.5 * 1000);
+            if (bypassed && bypassed.result) {
+                window.location.href = bypassed.result;
+                if (await handlePlatoboostKeyCheck(window.location.href)) {
+                    return;
+                } else {
+                    handlePlatoboost(window.location.href);
+                    return;
+                }
+            } else {
+                console.error("Bypass failed or result is missing:", bypassed);
+                alert("Bypass failed. Check the console for details.");
+            }
+        } catch (error) {
+            console.error("Platoboost API or bypass error:", error);
+        }
+    } else {
+        console.log("Failed to get Platoboost Ticket");
+    }
+}
+
+async function handleCodex() {
+    let session;
+    while (!session) {
+        session = localStorage.getItem("android-session");
+        await sleep(1000);
+    }
+    if (document?.getElementsByTagName('a')?.length && document.getElementsByTagName('a')[0] && document.getElementsByTagName('a')[0].innerHTML.includes('Get started')) {
+        document.getElementsByTagName('a')[0].click();
+    }
+    async function getStages() {
+        let response = await fetch('https://api.codex.lol/v1/stage/stages', {
+            method: 'GET',
+            headers: {
+                'Android-Session': session
+            }
+        });
+        let data = await response.json();
+
+        if (data.success) {
+            if (data.authenticated) {
+                return [];
+            }
+            return data.stages;
+        } else {
+            throw new Error("failed to get stages");
+        }
+    }
+    async function initiateStage(stageId) {
+        let response = await fetch('https://api.codex.lol/v1/stage/initiate', {
+            method: 'POST',
+            headers: {
+                'Android-Session': session,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                stageId
+            })
+        });
+        let data = await response.json();
+
+        if (data.success) {
+            return data.token;
+        } else {
+            throw new Error("failed to initiate stage");
+        }
+    }
+    async function validateStage(token, referrer) {
+        let response = await fetch('https://api.codex.lol/v1/stage/validate', {
+            method: 'POST',
+            headers: {
+                'Android-Session': session,
+                'Content-Type': 'application/json',
+                'Task-Referrer': referrer
+            },
+            body: JSON.stringify({
+                token
+            })
+        });
+        let data = await response.json();
+
+        if (data.success) {
+            return data.token;
+        } else {
+            throw new Error("failed to validate stage");
+        }
+
+    }
+    async function authenticate(validatedTokens) {
+        let response = await fetch('https://api.codex.lol/v1/stage/authenticate', {
+            method: 'POST',
+            headers: {
+                'Android-Session': session,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                tokens: validatedTokens
+            })
+        });
+        let data = await response.json();
+
+        if (data.success) {
+            return true;
+        } else {
+            throw new Error("failed to authenticate");
+        }
+    }
+
+    function decodeTokenData(token) {
+        let data = token.split(".")[1];
+        data = base64decode(data);
+        return JSON.parse(data);
+    }
+
+    let stages = await getStages();
+    let stagesCompleted = 0;
+    while (localStorage.getItem(stages[stagesCompleted]) && stagesCompleted < stages.length) {
+        stagesCompleted++;
+    }
+    if (stagesCompleted == stages.length) {
+        const authenticatedMessage = document.querySelector("span.text-gray-500").textContent;
+        if (authenticatedMessage) {
+            notifyUser("Successfully Authenticated", "", 10 * 1000, null, "Successfully Authenticated");
+        }
+        return;
+    }
+
+    let validatedTokens = [];
+    try {
+        while (stagesCompleted < stages.length) {
+            let stageId = stages[stagesCompleted].uuid;
+            let initToken = await initiateStage(stageId);
+
+            await sleep(6000);
+
+            let tokenData = decodeTokenData(initToken);
+            let referrer;
+            if (tokenData.link.includes('loot-links')) {
+                referrer = 'https://loot-links.com/';
+            } else if (tokenData.link.includes('loot-link')) {
+                referrer = 'https://loot-link.com/';
+            } else {
+                referrer = 'https://linkvertise.com/';
+            }
+
+            let validatedToken = await validateStage(initToken, referrer);
+            validatedTokens.push({
+                uuid: stageId,
+                token: validatedToken
+            });
+            notifyUser(`Stage completed`, `${stagesCompleted + 1}/${stages.length} stages`, 5000);
+
+            await sleep(1500);
+
+            stagesCompleted++;
+        }
+        if (authenticate(validatedTokens)) {
+            notifyUser('Bypassed Successfully', 'Refreshing Page', 3000);
+            await sleep(3000);
+            window.location.reload();
+        }
+    } catch (e) {
+        notifyUser("Error", e, 7000);
+        handleError(e);
+    }
+}
+
+var pageTitle = document.title;
+const url = window.location.href;
+var arceusNewURL = url.replace('https://linkvertise.com/376138/arceus-x-neo-key-system-1?o=sharing', 'https://lootdest.com/s?qljL');
+var ARCEUS_API = `https://spdmteam.com/api/keysystem?step=`;
+
+async function start() {
+    const apicheck = await checkapikey();
+    if (!apicheck) {
+        notifyUser("Invalid API Key", ``, 10 * 1000);
+        return;
+    }
+    if (url.startsWith("https://auth.platoboost.com/") || url.startsWith("https://auth.platoboost.net/")) {
+        handlePlatoboost(url);
+        return;
+    } else if (url.startsWith("https://mobile.codex.lol")) {
+        handleCodex()
+    } else if (url.includes("https://linkvertise.com/376138/arceus-x-neo-key-system-1?o=sharing")){
+        window.location.replace(arceusNewURL);
+    } else if (pageTitle.includes("NEO") && pageTitle.includes("1")) {
+        window.location.href = ARCEUS_API + "1&advertiser=linkvertise&OS=ios";
+    } else if (url.includes("https://spdmteam.com/key-system-2?hwid=")) {
+        window.location.replace("https://loot-link.com/s?mYit");
+    } else if (pageTitle.includes("NEO") && pageTitle.includes("2")) {
+        window.location.replace("https://spdmteam.com/api/keysystem?step=2&advertiser=linkvertise&OS=ios");
+    } else if (url.includes("https://spdmteam.com/key-system-3?hwid=")) {
+        window.location.replace("https://loot-link.com/s?qlbU");
+    } else if (pageTitle.includes("NEO") && pageTitle.includes("3")) {
+        window.location.replace("https://spdmteam.com/api/keysystem?step=3&advertiser=linkvertise&OS=ios");
+    } else if (url.includes("https://spdmteam.com/key-system-getkey")) {
+        notifyUser("Arceus Bypass", "Key System Completed!", 60 * 1000, false, "Key System Completed!");
+    }
+}
+
+(function() {
+    start();
+})();
