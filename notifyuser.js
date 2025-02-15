@@ -138,7 +138,7 @@ const notificationObserver = new MutationObserver(mutations => {
 });
 
 async function notifyUser(title, message, timeout = 5000, options = {}) {
-    const { redirectURL = null, copyText = null, customColor = "#0C0C0C", countdown = false } = options;
+    const { redirectURL = null, copyText = null, customColor = "#0C0C0C", countdown = false, countdownText = `Hang tight for {time} seconds.` } = options;
 
     return new Promise(resolve => {
         if (!document.querySelector('link[href*="fonts.googleapis.com"]')) {
@@ -214,7 +214,7 @@ async function notifyUser(title, message, timeout = 5000, options = {}) {
             countdownElement.textContent = `(${remainingTime})`;
             const countdownInterval = setInterval(() => {
                 remainingTime--;
-                countdownElement.textContent = `(${remainingTime})`;
+                countdownElement.textContent = countdownText.replaceAll(`{time}`, remainingTime);
                 if (remainingTime < 0) {
                     clearInterval(countdownInterval);
                 }
