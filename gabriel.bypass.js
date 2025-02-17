@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name        GabCode Platoboost Bypass
+// @name        GabCode Bypasser
 // @namespace   http://tampermonkey.net/
-// @version     1.2.9
-// @description Automatically bypass platoboost
+// @version     0.5.3
+// @description Auto Bypass Platoboost, Panda, KeyRBLX, KeyGuardian and more.
 // @author      Gabriel
 // @match       *://linkvertise.com/*/*
 // @match       *://linkvertise.com/?iwantbypass=*
@@ -19,6 +19,17 @@
 // @match       *://auth.platoboost.net/*
 // @match       *://spdmteam.com/*
 // @match       *://mobile.codex.lol/*
+// @match       *://flux.li/*
+// @match       *://keyguardian.org/a/*
+// @match       *://keyrblx.com/getkey/*
+// @match       *://pandadevelopment.net/*
+// @match       *://krnl.cat/*
+// @match       *://rekonise.com/*
+// @match       *://www.nixius.xyz/*
+// @match       *://trigonevo.fun/whitelist/*
+// @match       https://*.hcaptcha.com/*checkbox*
+// @match       https://*.hcaptcha.com/*hcaptcha-challenge*
+// @match       https://*.hcaptcha.com/*captcha*
 // @icon        https://w0.peakpx.com/wallpaper/874/748/HD-wallpaper-anime-app-icon-anime-app-icon.jpg
 // @license     Gabriel
 // @grant       GM_xmlhttpRequest
@@ -26,8 +37,8 @@
 // @grant       GM_getValue
 // @grant       GM_setValue
 // @require     https://update.greasyfork.org/scripts/421384/1134973/GM_fetch.js
-// @require     https://raw.githubusercontent.com/karlgbrl/userscript/refs/heads/main/notifyuser.js
-// @require     https://raw.githubusercontent.com/karlgbrl/userscript/refs/heads/main/platoboost.js
+// @require     https://github.com/karlgbrl/userscript/raw/refs/heads/main/notifyuser.js
+// @require     https://github.com/karlgbrl/userscript/raw/refs/heads/main/Main.js
 // @connect     api.gabcode.dev
 // @connect     auth.platoboost.com
 // @connect     auth.platoboost.net
@@ -44,7 +55,8 @@ function config() {
     const apikey = '';
     return {
         redirect: {
-            wait: 10, // for luarmor, try 30-40s for safety
+            wait: 5, // Wait time before redirecting to the URL
+            luarmorSleep: 25, // Wait time before redirecting to Luarmor
             enabled: true
         },
         apikey: apikey // enter your api
@@ -52,6 +64,18 @@ function config() {
 }
 function copyconfig() {
     return {
-        platoboost: true, // auto copy platoboost key
+        platoboost: true, // Auto Copy Platoboost Key
+        fluxus: true, // Auto Copy Fluxus Key
+        keyguardian: true, // Auto Copy Keyguardian Key
+        pandadevelopment: true, // Auto Copy Pandadevelopment Key
+        keyrblx: true, // Auto Copy Keyrblx Key
+        krnl: true, // Auto Copy KRNL KEY
+        nixius: true, // Auto Copy Nixius KEY
+    }
+}
+
+function fallback_check() {
+    return {
+        codex: true // If authenticated detected, it will recheck in API.
     }
 }
