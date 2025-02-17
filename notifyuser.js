@@ -228,6 +228,12 @@ async function notifyUser(title, message, timeout = 5000, options = {}) {
             resolve();
             setTimeout(recalculateNotificationPositions, 10);
         }, timeout);
+
+        notification.delete = () => {
+            notification.remove();
+            resolve();
+            setTimeout(recalculateNotificationPositions, 10);
+        }
     });
 }
 
