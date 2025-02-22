@@ -10,7 +10,7 @@ const myCSS = `
         position: fixed;
         top: 20px;
         right: 20px;
-        width: 300px;
+        width: 350px;
         max-width: 400px;
         background-color: #0f0f0f;
         opacity: 0.9;
