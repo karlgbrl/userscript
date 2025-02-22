@@ -36,12 +36,14 @@ const myCSS = `
     .customcodenotify-title {
         margin-top: 0;
         font-weight: bold;
-        font-size: 1.1em; /* Example font size */
-        font-family: 'Roboto', sans-serif; /* Example font family */
+        font-size: 1.1em;
+        font-family: 'Roboto', sans-serif;
     }
 
     .customcodenotify-message {
         margin-bottom: 10px;
+        font-size: 0.9em;
+        font-family: 'Roboto', sans-serif;
     }
 
     .customcodenotify-buttons {
