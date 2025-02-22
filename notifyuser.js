@@ -6,118 +6,118 @@ function addStyles(css) {
 }
 
 const myCSS = `
-.customcodenotify {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    left: 20px;
-    max-width: 400px;
-    min-height: 80px; /* Consistent minimum height */
-    background-color: #0C0C0C;
-    border: 1px solid #1c1c1c;
-    padding: 1rem; /* Using rem units */
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 9999999999 !important;
-    opacity: 0.9;
-    font-family: 'Open Sans', sans-serif;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    box-sizing: border-box;
-    word-wrap: break-word;
-    overflow-y: auto; /* Add scroll if content overflows */
-}
-
-.customcodenotify-title {
-    margin-top: 0;
-    font-weight: bold;
-    margin-bottom: 0.5rem; /* Consistent spacing */
-}
-
-.customcodenotify-message {
-    margin-bottom: 1rem; /* Consistent spacing */
-}
-
-.customcodenotify-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem; /* Consistent button spacing */
-    width: 100%;
-}
-
-.customcodenotify-button {
-    padding: 0.5rem 1rem; /* Using rem units */
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-    font-family: 'Open Sans', sans-serif;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.copy-button { background-color: #F2613F; }
-.copy-button:hover { background-color: #C95438; }
-
-.redirect-button { background-color: #006A67; }
-.redirect-button:hover { background-color: #19827f; }
-
-.customcodenotify-countdown {
-    margin-top: 0.5rem; /* Consistent spacing */
-    font-size: 0.8rem; /* Using rem units */
-    opacity: 0.7;
-}
-
-/* Small screens (e.g., mobile) */
-@media (max-width: 575px) {
     .customcodenotify {
-        font-size: 0.9rem; /* Using rem units */
-        padding: 0.75rem; /* Using rem units */
-        left: 10px;
-        right: 10px;
-        max-width: calc(100% - 20px);
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        left: 20px; /* Default left position */
+        max-width: 400px; /* Default max-width */
+        background-color: #0C0C0C;
+        border: 1px solid #1c1c1c;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 9999999999 !important;
+        opacity: 0.9;
+        font-family: 'Open Sans', sans-serif;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        box-sizing: border-box;
+        /* Use word-wrap for older browsers, overflow-wrap for modern ones */
+        word-wrap: break-word; /* Legacy browsers */
+        overflow-x: hidden;
+        overflow-wrap: break-word; /* Modern browsers */
     }
 
     .customcodenotify-title {
-        font-size: 1.2rem; /* Using rem units */
+        margin-top: 0;
+        font-weight: bold;
+    }
+
+    .customcodenotify-message {
+        margin-bottom: 10px;
     }
 
     .customcodenotify-buttons {
+        display: flex;
         flex-direction: column;
+        gap: 5px;
+        width: 100%;
     }
-}
 
-/* Medium screens (e.g., tablets) */
-@media (min-width: 576px) and (max-width: 768px) {
-    .customcodenotify {
-        font-size: 1rem; /* Using rem units */
-        padding: 0.8rem; /* Using rem units */
-    }
-    .customcodenotify-buttons {
-        flex-direction: column;
-    }
-}
-
-/* Large screens (e.g., desktops) */
-@media (min-width: 769px) {
-    .customcodenotify {
-        left: auto;
-        right: 20px;
-        max-width: 400px;
-        font-size: 1rem; /* Using rem units */
-        padding: 1rem; /* Using rem units */
-    }
-    .customcodenotify-buttons {
-        flex-direction: row;
-        gap: 0.5rem; /* Consistent button spacing */
-    }
     .customcodenotify-button {
-        width: auto;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        transition: background-color 0.3s ease;
+        width: 100%;
+        box-sizing: border-box;
     }
-}
+
+    .copy-button { background-color: #F2613F; }
+    .copy-button:hover { background-color: #C95438; }
+
+    .redirect-button { background-color: #006A67; }
+    .redirect-button:hover { background-color: #19827f; }
+
+    .customcodenotify-countdown {
+        margin-top: 5px;
+        font-size: smaller;
+        opacity: 0.7;
+    }
+
+    /* Small screens (e.g., mobile) */
+    @media (max-width: 575px) {
+        .customcodenotify {
+            font-size: 14px; /* Smaller font size */
+            padding: 10px; /* Smaller padding */
+            left: 10px;
+            right: 10px;
+            max-width: calc(100% - 20px);
+        }
+
+        .customcodenotify-title {
+            font-size: 1.2em; /* Relative font size */
+        }
+
+        .customcodenotify-buttons {
+            flex-direction: column; /* Buttons stack vertically */
+        }
+    }
+
+    /* Medium screens (e.g., tablets) */
+    @media (min-width: 576px) and (max-width: 768px) {
+        .customcodenotify {
+            font-size: 16px;
+            padding: 12px;
+        }
+        .customcodenotify-buttons {
+        flex-direction: column; /* Buttons stack vertically */
+        }
+    }
+
+    /* Large screens (e.g., desktops) - your existing styles */
+    @media (min-width: 769px) {
+        .customcodenotify {
+            left: auto;
+            right: 20px;
+            max-width: 400px;
+            font-size: 16px; /* Or a larger size if you prefer */
+            padding: 15px;
+        }
+        .customcodenotify-buttons {
+            flex-direction: row; /* Buttons side by side */
+            gap: 10px;
+        }
+        .customcodenotify-button {
+        width: auto; /* reset the width to auto */
+        }
+    }
 `;
 
 // Inject CSS only once
@@ -236,7 +236,6 @@ async function notifyUser(title, message, timeout = 5000, options = {}) {
         }
     });
 }
-
 
 function recalculateNotificationPositions() {
     const existingNotifications = document.querySelectorAll('.customcodenotify');
