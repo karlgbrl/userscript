@@ -10,6 +10,7 @@ const myCSS = `
         position: fixed;
         top: 20px;
         right: 20px;
+        width: 300px;
         max-width: 400px;
         background-color: #0f0f0f;
         opacity: 0.9;
@@ -48,7 +49,7 @@ const myCSS = `
         white-space: nowrap; /* Prevent text from wrapping to the next line */
         overflow: hidden;    /* Hide any text that overflows the container */
         text-overflow: ellipsis; /* Display "..." for overflowed text */
-        width: 200px;        /* Or whatever width you need */
+        width: 300px;        /* Or whatever width you need */
     }
 
     .customcodenotify-buttons {
