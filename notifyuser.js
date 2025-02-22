@@ -38,6 +38,7 @@ const myCSS = `
         display: flex;
         align-items: center;
         gap: 10px;
+        white-space: nowrap; /* Prevent wrapping */
     }
 
     .customcodenotify-message {
