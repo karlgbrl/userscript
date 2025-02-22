@@ -36,7 +36,7 @@ const myCSS = `
     .customcodenotify-title {
         margin-top: 0;
         font-weight: bold;
-        font-size: 1em; /* Example font size */
+        font-size: 1.1em; /* Example font size */
         font-family: 'Roboto', sans-serif; /* Example font family */
     }
 
