@@ -37,8 +37,6 @@ const myCSS = `
         font-family: 'Roboto', sans-serif;
         display: flex;
         align-items: center;
-        white-space: nowrap; /* Prevent text from wrapping to the next line */
-        overflow: hidden;    /* Hide any text that overflows the container */
         gap: 10px;
     }
 
