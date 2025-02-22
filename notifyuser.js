@@ -1,7 +1,7 @@
 function addStyles(css) {
     const style = document.createElement('style');
     style.textContent = css;
-    style.classList.add('customcodenotify-styles-injected'); // Add a class to mark it
+    style.classList.add('customcodenotify-styles-injected');
     document.head.appendChild(style);
 }
 
@@ -10,27 +10,23 @@ const myCSS = `
         position: fixed;
         top: 20px;
         right: 20px;
-        left: 20px; /* Default left position */
-        max-width: 300px; /* Default max-width */
-        max-height: 150px;
-        background-color: #0C0C0C;
-        border: 1px solid #1c1c1c;
+        max-width: 400px;
+        background-color: #0f0f0f;
+        opacity: 0.9;
+        border: 1.5px solid;
         padding: 15px;
         border-radius: 5px;
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-        z-index: 9999999999 !important;
-        opacity: 0.9;
+        z-index: 9999999999;
         font-family: 'Roboto', sans-serif;
         color: #fff;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         box-sizing: border-box;
-        /* Use word-wrap for older browsers, overflow-wrap for modern ones */
-        word-wrap: break-word; /* Legacy browsers */
-        overflow-x: hidden;
-        overflow-y: hidden;
-        overflow-wrap: break-word; /* Modern browsers */
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        transition: top 0.3s ease;
     }
 
     .customcodenotify-title {
@@ -38,17 +34,19 @@ const myCSS = `
         font-weight: bold;
         font-size: 1.1em;
         font-family: 'Roboto', sans-serif;
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
 
     .customcodenotify-message {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         font-size: 0.9em;
         font-family: 'Roboto', sans-serif;
     }
 
     .customcodenotify-buttons {
         display: flex;
-        flex-direction: column;
         gap: 5px;
         width: 100%;
     }
@@ -65,8 +63,8 @@ const myCSS = `
         box-sizing: border-box;
     }
 
-    .copy-button { background-color: #F2613F; }
-    .copy-button:hover { background-color: #C95438; }
+    .copy-button { background-color: #61c779; }
+    .copy-button:hover { background-color: #38C95A; }
 
     .redirect-button { background-color: #006A67; }
     .redirect-button:hover { background-color: #19827f; }
@@ -76,57 +74,8 @@ const myCSS = `
         font-size: smaller;
         opacity: 0.7;
     }
-
-    /* Small screens (e.g., mobile) */
-    @media (max-width: 575px) {
-        .customcodenotify {
-            font-size: 14px; /* Smaller font size */
-            padding: 10px; /* Smaller padding */
-            left: 10px;
-            right: 10px;
-            max-width: calc(100% - 20px);
-        }
-
-        .customcodenotify-title {
-            font-size: 1.2em; /* Relative font size */
-        }
-
-        .customcodenotify-buttons {
-            flex-direction: column; /* Buttons stack vertically */
-        }
-    }
-
-    /* Medium screens (e.g., tablets) */
-    @media (min-width: 576px) and (max-width: 768px) {
-        .customcodenotify {
-            font-size: 16px;
-            padding: 12px;
-        }
-        .customcodenotify-buttons {
-        flex-direction: column; /* Buttons stack vertically */
-        }
-    }
-
-    /* Large screens (e.g., desktops) - your existing styles */
-    @media (min-width: 769px) {
-        .customcodenotify {
-            left: auto;
-            right: 20px;
-            max-width: 400px;
-            font-size: 16px; /* Or a larger size if you prefer */
-            padding: 15px;
-        }
-        .customcodenotify-buttons {
-            flex-direction: row; /* Buttons side by side */
-            gap: 10px;
-        }
-        .customcodenotify-button {
-        width: auto; /* reset the width to auto */
-        }
-    }
 `;
 
-// Inject CSS only once
 if (!document.querySelector('.customcodenotify-styles-injected')) {
     addStyles(myCSS);
 }
@@ -143,8 +92,10 @@ const notificationObserver = new MutationObserver(mutations => {
     });
 });
 
-async function notifyUser(title, message, timeout = 5000, options = {}) {
-    const { redirectURL = null, copyText = null, customColor = "#0C0C0C", countdown = false, countdownText = `Hang tight for {time} seconds.` } = options;
+notificationObserver.observe(document.body, { childList: true });
+
+async function notification(title, message, timeout = 5000, options = {}) {
+    const { type = 'default', copyText = null, redirectURL = null, countdown = false, countdownText = `Redirecting in {time}s` } = options;
 
     return new Promise(resolve => {
         if (!document.querySelector('link[href*="fonts.googleapis.com"]')) {
@@ -154,73 +105,82 @@ async function notifyUser(title, message, timeout = 5000, options = {}) {
             document.head.appendChild(link);
         }
 
+        if (!document.querySelector('link[href*="fontawesome.com"]')) {
+            const faLink = document.createElement('link');
+            faLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css';
+            faLink.rel = 'stylesheet';
+            document.head.appendChild(faLink);
+        }
+
         const notification = document.createElement('div');
         notification.classList.add('customcodenotify');
-        notification.style.backgroundColor = customColor; // Set custom color
-        
+
+        let borderColor = '#0C0C0C';
+        let iconClass = 'fa-info-circle'; // Default icon
+        switch (type) {
+            case 'redirect':
+                borderColor = '#3f55e8';
+                iconClass = 'fa-external-link-alt';
+                break;
+            case 'key':
+                borderColor = '#3fe879';
+                iconClass = 'fa-copy';
+                break;
+            case 'error':
+                borderColor = '#d82b2b';
+                iconClass = 'fa-exclamation-circle';
+                break;
+            case 'status':
+                borderColor = '#e87c3f';
+                iconClass = 'fa-check-circle';
+                break;
+        }
+        notification.style.borderColor = borderColor;
+
         notification.innerHTML = `
-            <h3 class="customcodenotify-title">${title}</h3>
+            <h3 class="customcodenotify-title">
+                <i class="fas ${iconClass}" style="color: ${borderColor};"></i>
+                ${title}
+            </h3>
             <p class="customcodenotify-message">${message}</p>
             <div class="customcodenotify-buttons"></div>
             ${countdown ? '<div class="customcodenotify-countdown"></div>' : ''}
         `;
 
-        const existingNotifications = document.querySelectorAll('.customcodenotify');
-        let topPosition = 20;
-
-        if (existingNotifications.length > 0) {
-            const lastNotification = existingNotifications[existingNotifications.length - 1];
-            topPosition = lastNotification.offsetTop + lastNotification.offsetHeight + 20; // Add spacing (20px)
-        }
-
-        notification.style.top = `${topPosition}px`; // Set the top position
-
         const buttonContainer = notification.querySelector('.customcodenotify-buttons');
         const countdownElement = notification.querySelector('.customcodenotify-countdown');
 
-        const createButton = (text, className, clickHandler, hoverHandler) => {
-            const button = document.createElement('button');
-            button.textContent = text;
-            button.classList.add('customcodenotify-button', className);
-            button.addEventListener('click', clickHandler);
-            if (hoverHandler) {
-                button.addEventListener('mouseover', () => hoverHandler(button, true));
-                button.addEventListener('mouseout', () => hoverHandler(button, false));
-            }
-            return button;
-        };
-
         if (copyText) {
-            const copyButton = createButton('Copy', 'copy-button', () => {
+            const copyButton = document.createElement('button');
+            copyButton.textContent = 'Copy';
+            copyButton.classList.add('customcodenotify-button', 'copy-button');
+            copyButton.addEventListener('click', () => {
                 navigator.clipboard.writeText(copyText)
                     .then(() => {
                         copyButton.textContent = "Copied!";
                         setTimeout(() => copyButton.textContent = "Copy", 2000);
                     })
                     .catch(err => console.error('Failed to copy: ', err));
-            }, (button, isHovering) => {
-                button.style.backgroundColor = isHovering ? '#C95438' : '#F2613F';
             });
             buttonContainer.appendChild(copyButton);
         }
 
         if (redirectURL) {
-            const redirectButton = createButton('Go to Link', 'redirect-button', () => {
-                notification.remove();
-                resolve();
+            const redirectButton = document.createElement('button');
+            redirectButton.textContent = 'Go to Link';
+            redirectButton.classList.add('customcodenotify-button', 'redirect-button');
+            redirectButton.addEventListener('click', () => {
                 window.location.href = redirectURL;
-            }, (button, isHovering) => {
-                button.style.backgroundColor = isHovering ? '#19827f' : '#006A67';
             });
             buttonContainer.appendChild(redirectButton);
         }
 
         if (countdown && countdownElement) {
             let remainingTime = timeout / 1000;
-            countdownElement.textContent = countdownText.replaceAll(`{time}`, remainingTime);
+            countdownElement.textContent = countdownText.replace(`{time}`, remainingTime);
             const countdownInterval = setInterval(() => {
                 remainingTime--;
-                countdownElement.textContent = countdownText.replaceAll(`{time}`, remainingTime);
+                countdownElement.textContent = countdownText.replace(`{time}`, remainingTime);
                 if (remainingTime < 0) {
                     clearInterval(countdownInterval);
                 }
@@ -228,27 +188,22 @@ async function notifyUser(title, message, timeout = 5000, options = {}) {
         }
 
         document.body.appendChild(notification);
+        recalculateNotificationPositions();
 
         setTimeout(() => {
             notification.remove();
             resolve();
-            setTimeout(recalculateNotificationPositions, 10);
+            recalculateNotificationPositions();
         }, timeout);
-
-        notification.delete = () => {
-            notification.remove();
-            resolve();
-            setTimeout(recalculateNotificationPositions, 10);
-        }
     });
 }
 
 function recalculateNotificationPositions() {
-    const existingNotifications = document.querySelectorAll('.customcodenotify');
+    const notifications = document.querySelectorAll('.customcodenotify');
     let topPosition = 20;
 
-    existingNotifications.forEach(notif => {
-        notif.style.top = `${topPosition}px`;
-        topPosition += notif.offsetHeight + 20;
+    notifications.forEach(notification => {
+        notification.style.top = `${topPosition}px`;
+        topPosition += notification.offsetHeight + 20; // Add 20px spacing between notifications
     });
 }
