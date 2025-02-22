@@ -48,6 +48,7 @@ const myCSS = `
         white-space: nowrap; /* Prevent text from wrapping to the next line */
         overflow: hidden;    /* Hide any text that overflows the container */
         text-overflow: ellipsis; /* Display "..." for overflowed text */
+        width: 200px;        /* Or whatever width you need */
     }
 
     .customcodenotify-buttons {
