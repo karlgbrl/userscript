@@ -115,7 +115,7 @@ async function notifyUser(title, message, timeout = 5000, options = {}) {
         const notification = document.createElement('div');
         notification.classList.add('customcodenotify');
 
-        let borderColor = '#0C0C0C';
+        let borderColor = '#4154b0';
         let iconClass = 'fa-info-circle'; // Default icon
         switch (type) {
             case 'redirect':
