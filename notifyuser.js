@@ -94,7 +94,7 @@ const notificationObserver = new MutationObserver(mutations => {
 
 notificationObserver.observe(document.body, { childList: true });
 
-async function notification(title, message, timeout = 5000, options = {}) {
+async function notifyUser(title, message, timeout = 5000, options = {}) {
     const { type = 'default', copyText = null, redirectURL = null, countdown = false, countdownText = `Redirecting in {time}s` } = options;
 
     return new Promise(resolve => {
