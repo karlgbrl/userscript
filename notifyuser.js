@@ -12,7 +12,7 @@ const myCSS = `
         right: 20px;
         left: 20px; /* Default left position */
         max-width: 300px; /* Default max-width */
-        max-height: 100px;
+        max-height: 150px;
         background-color: #0C0C0C;
         border: 1px solid #1c1c1c;
         padding: 15px;
