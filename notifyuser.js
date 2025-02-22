@@ -72,8 +72,8 @@ const myCSS = `
     .copy-button { background-color: #61c779; }
     .copy-button:hover { background-color: #38C95A; }
 
-    .redirect-button { background-color: #854d20; }
-    .redirect-button:hover { background-color: #4d311b; }
+    .redirect-button { background-color: #cc7835; }
+    .redirect-button:hover { background-color: #805634; }
 
     .customcodenotify-countdown {
         margin-top: 5px;
