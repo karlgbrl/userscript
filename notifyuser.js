@@ -11,7 +11,8 @@ const myCSS = `
         top: 20px;
         right: 20px;
         left: 20px; /* Default left position */
-        max-width: 400px; /* Default max-width */
+        max-width: 300px; /* Default max-width */
+        max-height: 100px;
         background-color: #0C0C0C;
         border: 1px solid #1c1c1c;
         padding: 15px;
