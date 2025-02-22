@@ -20,7 +20,7 @@ const myCSS = `
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         z-index: 9999999999 !important;
         opacity: 0.9;
-        font-family: 'Open Sans', sans-serif;
+        font-family: 'Roboto', sans-serif;
         color: #fff;
         display: flex;
         flex-direction: column;
@@ -36,6 +36,8 @@ const myCSS = `
     .customcodenotify-title {
         margin-top: 0;
         font-weight: bold;
+        font-size: 1.5em; /* Example font size */
+        font-family: 'Roboto', sans-serif; /* Example font family */
     }
 
     .customcodenotify-message {
@@ -55,7 +57,7 @@ const myCSS = `
         border-radius: 5px;
         color: white;
         cursor: pointer;
-        font-family: 'Open Sans', sans-serif;
+        font-family: 'Roboto', sans-serif;
         transition: background-color 0.3s ease;
         width: 100%;
         box-sizing: border-box;
@@ -145,7 +147,7 @@ async function notifyUser(title, message, timeout = 5000, options = {}) {
     return new Promise(resolve => {
         if (!document.querySelector('link[href*="fonts.googleapis.com"]')) {
             const link = document.createElement('link');
-            link.href = 'https://fonts.googleapis.com/css2?family=Open+Sans&display=swap';
+            link.href = 'https://fonts.googleapis.com/css2?family=Roboto&display=swap';
             link.rel = 'stylesheet';
             document.head.appendChild(link);
         }
