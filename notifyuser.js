@@ -129,7 +129,7 @@ const notificationObserver = new MutationObserver(mutations => {
     mutations.forEach(mutation => {
         if (mutation.removedNodes.length) {
             mutation.removedNodes.forEach(node => {
-                if (node.classList && node.classList.contains('notification')) {
+                if (node.classList && node.classList.contains('customcodenotify')) {
                     recalculateNotificationPositions();
                 }
             });
@@ -149,14 +149,14 @@ async function notifyUser(title, message, timeout = 5000, options = {}) {
         }
 
         const notification = document.createElement('div');
-        notification.classList.add('notification');
+        notification.classList.add('customcodenotify');
         notification.style.backgroundColor = customColor; // Set custom color
         
         notification.innerHTML = `
-            <h3 class="notification-title">${title}</h3>
-            <p class="notification-message">${message}</p>
-            <div class="notification-buttons"></div>
-            ${countdown ? '<div class="notification-countdown"></div>' : ''}
+            <h3 class="customcodenotify-title">${title}</h3>
+            <p class="customcodenotify-message">${message}</p>
+            <div class="customcodenotify-buttons"></div>
+            ${countdown ? '<div class="customcodenotify-countdown"></div>' : ''}
         `;
 
         const existingNotifications = document.querySelectorAll('.customcodenotify');
