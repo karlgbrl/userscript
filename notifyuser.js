@@ -36,6 +36,8 @@ const myCSS = `
         font-family: 'Roboto', sans-serif;
         display: flex;
         align-items: center;
+        white-space: nowrap; /* Prevent text from wrapping to the next line */
+        overflow: hidden;    /* Hide any text that overflows the container */
         gap: 10px;
     }
 
@@ -43,6 +45,9 @@ const myCSS = `
         margin-bottom: 5px;
         font-size: 0.9em;
         font-family: 'Roboto', sans-serif;
+        white-space: nowrap; /* Prevent text from wrapping to the next line */
+        overflow: hidden;    /* Hide any text that overflows the container */
+        text-overflow: ellipsis; /* Display "..." for overflowed text */
     }
 
     .customcodenotify-buttons {
