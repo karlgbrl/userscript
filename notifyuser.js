@@ -10,7 +10,7 @@ const myCSS = `
         position: fixed;
         top: 20px;
         right: 20px;
-        width: 90%; /* Responsive width */
+        width: 85%; /* Responsive width */
         max-width: 400px; /* Maximum width for larger screens */
         background-color: #0f0f0f;
         opacity: 0.9;
@@ -84,7 +84,7 @@ const myCSS = `
     /* Media Queries for Responsiveness */
     @media (max-width: 768px) {
         .customcodenotify {
-            width: 90%; /* Take up more width on smaller screens */
+            width: 70%; /* Take up more width on smaller screens */
             right: 5%; /* Center the notification */
             left: 5%; /* Center the notification */
             top: 10px; /* Adjust top position */
@@ -97,7 +97,7 @@ const myCSS = `
 
         .customcodenotify-message {
             font-size: 0.8em; /* Smaller font size for mobile */
-            white-space: normal; /* Allow text to wrap on smaller screens */
+            // white-space: normal; /* Allow text to wrap on smaller screens */
         }
 
         .customcodenotify-button {
@@ -108,7 +108,7 @@ const myCSS = `
 
     @media (max-width: 480px) {
         .customcodenotify {
-            width: 95%; /* Take up almost full width on very small screens */
+            width: 75%; /* Take up almost full width on very small screens */
             right: 2.5%; /* Center the notification */
             left: 2.5%; /* Center the notification */
             top: 5px; /* Adjust top position */
