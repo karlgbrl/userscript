@@ -10,8 +10,8 @@ const myCSS = `
         position: fixed;
         top: 20px;
         right: 20px;
-        width: 350px;
-        max-width: 400px;
+        width: 90%; /* Responsive width */
+        max-width: 400px; /* Maximum width for larger screens */
         background-color: #0f0f0f;
         opacity: 0.9;
         border: 1.5px solid;
@@ -48,7 +48,7 @@ const myCSS = `
         white-space: nowrap; /* Prevent text from wrapping to the next line */
         overflow: hidden;    /* Hide any text that overflows the container */
         text-overflow: ellipsis; /* Display "..." for overflowed text */
-        width: 300px;        /* Or whatever width you need */
+        width: 100%; /* Full width for responsiveness */
     }
 
     .customcodenotify-buttons {
@@ -79,6 +79,53 @@ const myCSS = `
         margin-top: 5px;
         font-size: smaller;
         opacity: 0.7;
+    }
+
+    /* Media Queries for Responsiveness */
+    @media (max-width: 768px) {
+        .customcodenotify {
+            width: 90%; /* Take up more width on smaller screens */
+            right: 5%; /* Center the notification */
+            left: 5%; /* Center the notification */
+            top: 10px; /* Adjust top position */
+            max-width: none; /* Remove max-width restriction */
+        }
+
+        .customcodenotify-title {
+            font-size: 1em; /* Smaller font size for mobile */
+        }
+
+        .customcodenotify-message {
+            font-size: 0.8em; /* Smaller font size for mobile */
+            white-space: normal; /* Allow text to wrap on smaller screens */
+        }
+
+        .customcodenotify-button {
+            padding: 6px 12px; /* Smaller padding for mobile */
+            font-size: 0.8em; /* Smaller font size for mobile */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .customcodenotify {
+            width: 95%; /* Take up almost full width on very small screens */
+            right: 2.5%; /* Center the notification */
+            left: 2.5%; /* Center the notification */
+            top: 5px; /* Adjust top position */
+        }
+
+        .customcodenotify-title {
+            font-size: 0.9em; /* Even smaller font size for very small screens */
+        }
+
+        .customcodenotify-message {
+            font-size: 0.75em; /* Even smaller font size for very small screens */
+        }
+
+        .customcodenotify-button {
+            padding: 5px 10px; /* Even smaller padding for very small screens */
+            font-size: 0.75em; /* Even smaller font size for very small screens */
+        }
     }
 `;
 
