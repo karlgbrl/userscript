@@ -30,7 +30,7 @@ const myCSS = `
         transition: top 0.3s ease !important;
     }
 
-    .customcodenotify .customcodenotify-title {
+    .customcodenotify-title {
         margin-top: 0 !important;
         font-weight: bold !important;
         font-size: 1.1em !important;
@@ -41,7 +41,7 @@ const myCSS = `
         white-space: nowrap !important;
     }
 
-    .customcodenotify .customcodenotify-message {
+    .customcodenotify-message {
         margin-bottom: 5px !important;
         font-size: 0.9em !important;
         font-family: 'Roboto', sans-serif !important;
@@ -51,13 +51,13 @@ const myCSS = `
         width: 100% !important;
     }
 
-    .customcodenotify .customcodenotify-buttons {
+    .customcodenotify-buttons {
         display: flex !important;
         gap: 5px !important;
         width: 100% !important;
     }
 
-    .customcodenotify .customcodenotify-button {
+    .customcodenotify-button {
         padding: 8px 16px !important;
         border: none !important;
         border-radius: 5px !important;
@@ -69,13 +69,13 @@ const myCSS = `
         box-sizing: border-box !important;
     }
 
-    .customcodenotify .copy-button { background-color: #61c779 !important; }
-    .customcodenotify .copy-button:hover { background-color: #38C95A !important; }
+    .copy-button { background-color: #61c779 !important; }
+    .copy-button:hover { background-color: #38C95A !important; }
 
-    .customcodenotify .redirect-button { background-color: #cc7835 !important; }
-    .customcodenotify .redirect-button:hover { background-color: #805634 !important; }
+    .redirect-button { background-color: #cc7835 !important; }
+    .redirect-button:hover { background-color: #805634 !important; }
 
-    .customcodenotify .customcodenotify-countdown {
+    .customcodenotify-countdown {
         margin-top: 5px !important;
         font-size: smaller !important;
         opacity: 0.7 !important;
@@ -91,15 +91,15 @@ const myCSS = `
             max-width: none !important;
         }
 
-        .customcodenotify .customcodenotify-title {
+        .customcodenotify-title {
             font-size: 1em !important;
         }
 
-        .customcodenotify .customcodenotify-message {
+        .customcodenotify-message {
             font-size: 0.8em !important;
         }
 
-        .customcodenotify .customcodenotify-button {
+        .customcodenotify-button {
             padding: 6px 12px !important;
             font-size: 0.8em !important;
         }
@@ -113,15 +113,15 @@ const myCSS = `
             top: 5px !important;
         }
 
-        .customcodenotify .customcodenotify-title {
+        .customcodenotify-title {
             font-size: 0.9em !important;
         }
 
-        .customcodenotify .customcodenotify-message {
+        .customcodenotify-message {
             font-size: 0.75em !important;
         }
 
-        .customcodenotify .customcodenotify-button {
+        .customcodenotify-button {
             padding: 5px 10px !important;
             font-size: 0.75em !important;
         }
