@@ -7,27 +7,27 @@ function addStyles(css) {
 
 const myCSS = `
     .customcodenotify {
-        position: fixed !important;
-        top: 20px !important;
-        right: 20px !important;
-        width: 85% !important;
-        max-width: 400px !important;
-        background-color: #0f0f0f !important;
-        opacity: 0.9 !important;
-        border: 1.5px solid !important;
-        padding: 15px !important;
-        border-radius: 5px !important;
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2) !important;
-        z-index: 9999999999 !important;
-        font-family: 'Roboto', sans-serif !important;
-        color: #fff !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        box-sizing: border-box !important;
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        transition: top 0.3s ease !important;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 85%; /* Responsive width */
+        max-width: 400px; /* Maximum width for larger screens */
+        background-color: #0f0f0f;
+        opacity: 0.9;
+        border: 1.5px solid;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 9999999999;
+        font-family: 'Roboto', sans-serif;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        box-sizing: border-box;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        transition: top 0.3s ease;
     }
 
     .customcodenotify-title {
@@ -38,92 +38,93 @@ const myCSS = `
         display: flex !important;
         align-items: center !important;
         gap: 10px !important;
-        white-space: nowrap !important;
+        white-space: nowrap !important; /* Prevent wrapping */
     }
 
     .customcodenotify-message {
         margin-bottom: 5px !important;
         font-size: 0.9em !important;
         font-family: 'Roboto', sans-serif !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        width: 100% !important;
+        white-space: nowrap !important; /* Prevent text from wrapping to the next line */
+        overflow: hidden !important;    /* Hide any text that overflows the container */
+        text-overflow: ellipsis !important; /* Display "..." for overflowed text */
+        width: 100% !important; /* Full width for responsiveness */
     }
 
     .customcodenotify-buttons {
-        display: flex !important;
-        gap: 5px !important;
-        width: 100% !important;
+        display: flex;
+        gap: 5px;
+        width: 100%;
     }
 
     .customcodenotify-button {
-        padding: 8px 16px !important;
-        border: none !important;
-        border-radius: 5px !important;
-        color: white !important;
-        cursor: pointer !important;
-        font-family: 'Roboto', sans-serif !important;
-        transition: background-color 0.3s ease !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        font-family: 'Roboto', sans-serif;
+        transition: background-color 0.3s ease;
+        width: 100%;
+        box-sizing: border-box;
     }
 
-    .copy-button { background-color: #61c779 !important; }
-    .copy-button:hover { background-color: #38C95A !important; }
+    .copy-button { background-color: #61c779; }
+    .copy-button:hover { background-color: #38C95A; }
 
-    .redirect-button { background-color: #cc7835 !important; }
-    .redirect-button:hover { background-color: #805634 !important; }
+    .redirect-button { background-color: #cc7835; }
+    .redirect-button:hover { background-color: #805634; }
 
     .customcodenotify-countdown {
-        margin-top: 5px !important;
-        font-size: smaller !important;
-        opacity: 0.7 !important;
+        margin-top: 5px;
+        font-size: smaller;
+        opacity: 0.7;
     }
 
     /* Media Queries for Responsiveness */
     @media (max-width: 768px) {
         .customcodenotify {
-            width: 70% !important;
-            right: 5% !important;
-            left: 5% !important;
-            top: 10px !important;
-            max-width: none !important;
+            width: 70%; /* Take up more width on smaller screens */
+            right: 5%; /* Center the notification */
+            left: 5%; /* Center the notification */
+            top: 10px; /* Adjust top position */
+            max-width: none; /* Remove max-width restriction */
         }
 
         .customcodenotify-title {
-            font-size: 1em !important;
+            font-size: 1em; /* Smaller font size for mobile */
         }
 
         .customcodenotify-message {
-            font-size: 0.8em !important;
+            font-size: 0.8em; /* Smaller font size for mobile */
+            // white-space: normal; /* Allow text to wrap on smaller screens */
         }
 
         .customcodenotify-button {
-            padding: 6px 12px !important;
-            font-size: 0.8em !important;
+            padding: 6px 12px; /* Smaller padding for mobile */
+            font-size: 0.8em; /* Smaller font size for mobile */
         }
     }
 
     @media (max-width: 480px) {
         .customcodenotify {
-            width: 75% !important;
-            right: 2.5% !important;
-            left: 2.5% !important;
-            top: 5px !important;
+            width: 75%; /* Take up almost full width on very small screens */
+            right: 2.5%; /* Center the notification */
+            left: 2.5%; /* Center the notification */
+            top: 5px; /* Adjust top position */
         }
 
         .customcodenotify-title {
-            font-size: 0.9em !important;
+            font-size: 0.9em; /* Even smaller font size for very small screens */
         }
 
         .customcodenotify-message {
-            font-size: 0.75em !important;
+            font-size: 0.75em; /* Even smaller font size for very small screens */
         }
 
         .customcodenotify-button {
-            padding: 5px 10px !important;
-            font-size: 0.75em !important;
+            padding: 5px 10px; /* Even smaller padding for very small screens */
+            font-size: 0.75em; /* Even smaller font size for very small screens */
         }
     }
 `;
