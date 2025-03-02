@@ -31,6 +31,7 @@ const myCSS = `
     }
 
     .customcodenotify-title {
+        text-align: left !important;
         margin-top: 0 !important;
         font-weight: bold !important;
         font-size: 1.1em !important;
@@ -42,6 +43,7 @@ const myCSS = `
     }
 
     .customcodenotify-message {
+        text-align: left !important;
         margin-bottom: 5px !important;
         font-size: 0.9em !important;
         font-family: 'Roboto', sans-serif !important;
