@@ -173,10 +173,10 @@ async function notifyUser(title, message, timeout = 5000, options = {}) {
         notification.classList.add('customcodenotify');
 
         let borderColor = '#4154b0';
-        let iconClass = 'fa-info-circle'; // Default icon
+        let iconClass = 'fa-inbox'; // Default icon
         switch (type) {
             case 'redirect':
-                borderColor = '#3f55e8';
+                borderColor = '#ed4e59';
                 iconClass = 'fa-external-link-alt';
                 break;
             case 'key':
