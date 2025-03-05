@@ -32,7 +32,8 @@ const myCSS = `
 
     .customcodenotify-title {
         text-align: left !important;
-        margin-top: 0 !important;
+        margin: 0 !important; /* Sets all margins to 0 */
+        padding: 0 !important; /* Sets all paddings to 0 */
         font-weight: bold !important;
         font-size: 1.1em !important;
         font-family: 'Roboto', sans-serif !important;
@@ -44,7 +45,8 @@ const myCSS = `
 
     .customcodenotify-message {
         text-align: left !important;
-        margin-bottom: 5px !important;
+        margin: 0 0 5px 0 !important; /* top, right, bottom, left */
+        padding: 0 !important;
         font-size: 0.9em !important;
         font-family: 'Roboto', sans-serif !important;
         white-space: nowrap !important; /* Prevent text from wrapping to the next line */
