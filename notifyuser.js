@@ -31,6 +31,7 @@ const myCSS = `
     }
 
     .customcodenotify-title {
+        color: #f0f0f0 !important;
         text-align: left !important;
         margin: 0 !important; /* Sets all margins to 0 */
         padding: 0 !important; /* Sets all paddings to 0 */
@@ -44,6 +45,7 @@ const myCSS = `
     }
 
     .customcodenotify-message {
+        color: #f0f0f0 !important;
         text-align: left !important;
         margin: 0 0 5px 0 !important; /* top, right, bottom, left */
         padding: 0 !important;
