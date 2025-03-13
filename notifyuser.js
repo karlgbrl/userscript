@@ -183,7 +183,7 @@ async function notifyUser(title, message, timeout = 5000, options = {}) {
                 break;
             case 'key':
                 borderColor = '#3fe879';
-                iconClass = 'fa-copy';
+                iconClass = 'fa-key';
                 break;
             case 'error':
                 borderColor = '#d82b2b';
