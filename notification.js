@@ -177,6 +177,7 @@ class ZenNotification {
     }
 
     notify(title, message, timeout = 5000, options = {}) {
+        this.ensureDependencies();
         const { type = 'default', buttons = [], countdown = false, countdownText = `Dismissing in {time}s` } = options;
         let autoTimeoutId;
         let resolvePromise;
