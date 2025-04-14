@@ -232,7 +232,6 @@ class ZenNotification {
                 await onClosePromise;
             }
         };
-        console.log("Notify function executed, onClose is:", typeof returnObject.onClose);
         return returnObject;
     }
 
@@ -281,14 +280,17 @@ class ZenNotification {
     startCountdown(element, timeout, text, notification, resolve) {
         let remainingTime = Math.ceil(timeout / 1000);
         element.textContent = text.replace(`{time}`, remainingTime);
+
         const interval = setInterval(() => {
             remainingTime--;
-            element.textContent = text.replace(`{time}`, remainingTime);
-            if (remainingTime < 0) {
+            if (remainingTime <= 0) {
                 clearInterval(interval);
                 this.removeNotification(notification, resolve);
+            } else {
+                element.textContent = text.replace(`{time}`, remainingTime);
             }
         }, 1000);
+        
         const notificationData = this.notifications.find(n => n.element === notification);
         if (notificationData) {
             notificationData.timeoutId = interval;
@@ -322,3 +324,49 @@ class ZenNotification {
 }
 
 const zenNotify = new ZenNotification();
+
+function bypassNotification(redirectURL, waitTime, countdownText) {
+	zenNotify.notify('Bypassed Result', redirectURL, waitTime, {
+		type: `redirect`,
+		buttons: [
+			{text:"Copy", className: "copy-button", onClick: (instance, button, notification) => {
+				const origText = button.textContent;
+				GM_setClipboard(redirectURL);
+				button.textContent = 'Copied';
+				setTimeout(() => {
+					button.textContent = origText
+				}, 1000);
+			}},
+			{text:"Redirect", className: "redirect-button", onClick: () => window.location.href = redirectURL}
+		],
+		countdown: true,
+		countdownText: countdownText
+	});
+}
+
+function errorNotification(message) {
+	zenNotify.notify("Error", message, 60 * 1000, {
+		type: `error`,
+		buttons: [
+			{text:"Copy", className: "copy-button", onClick: (instance, button, notification) => {
+				const origText = button.textContent;
+				GM_setClipboard(message);
+				button.textContent = 'Copied';
+				setTimeout(() => {
+					button.textContent = origText
+				}, 1000);
+			}}
+		],
+	})
+}
+
+function copyButton(text) {
+    return { text: "Copy", className: "copy-button", onClick: (instance, button, notification) => {
+        const origText = button.textContent;
+        GM_setClipboard(text);
+        button.textContent = 'Copied';
+        setTimeout(() => {
+            button.textContent = origText
+        }, 1000);
+    } };
+}
