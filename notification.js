@@ -222,7 +222,7 @@ class ZenNotification {
             notification.appendChild(countdownElement);
             this.startCountdown(countdownElement, timeout, countdownText, notification, () => resolvePromise());
         } else {
-            autoTimeoutId = _setTimeout(() => {
+            autoTimeoutId = setTimeout(() => {
                 this.removeNotification(notification, () => resolvePromise());
             }, timeout);
         }
@@ -236,7 +236,7 @@ class ZenNotification {
         const returnObject = {
             element: notification,
             close: () => {
-                _clearTimeout(autoTimeoutId);
+                clearTimeout(autoTimeoutId);
                 this.removeNotification(notification, () => resolvePromise());
             },
             onClose: async () => {
@@ -292,12 +292,12 @@ class ZenNotification {
         let remainingTime = Math.ceil(timeout / 1000);
         text = text || "Dismissing in {time}s";
         element.textContent = text.replace(`{time}`, remainingTime);
-        const interval = _setInterval(() => {
+        const interval = setInterval(() => {
             remainingTime--;
             console.log(remainingTime);
             element.textContent = text.replace(`{time}`, remainingTime);
             if (remainingTime <= 0) {
-                _clearInterval(interval);
+                clearInterval(interval);
                 this.removeNotification(notification, resolve);
             }
         }, 1000);
