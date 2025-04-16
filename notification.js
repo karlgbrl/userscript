@@ -292,9 +292,9 @@ class ZenNotification {
         let remainingTime = Math.ceil(timeout / 1000);
         text = text || "Dismissing in {time}s";
         element.textContent = text.replace(`{time}`, remainingTime);
-        console.log(setInterval, _setInterval);
         const interval = _setInterval(() => {
             remainingTime--;
+            console.log(remainingTime);
             element.textContent = text.replace(`{time}`, remainingTime);
             if (remainingTime <= 0) {
                 _clearInterval(interval);
