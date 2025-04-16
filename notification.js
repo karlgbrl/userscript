@@ -1,3 +1,15 @@
+// Save clean native versions before the site messes with them
+const _setInterval = window.setInterval.bind(window);
+const _clearInterval = window.clearInterval.bind(window);
+const _setTimeout = window.setTimeout.bind(window);
+const _clearTimeout = window.clearTimeout.bind(window);
+
+Object.defineProperty(window, 'setInterval', {
+    value: _setInterval,
+    writable: false,
+    configurable: false
+});
+
 class ZenNotification {
     constructor() {
         this.styleInjected = false;
@@ -210,7 +222,7 @@ class ZenNotification {
             notification.appendChild(countdownElement);
             this.startCountdown(countdownElement, timeout, countdownText, notification, () => resolvePromise());
         } else {
-            autoTimeoutId = setTimeout(() => {
+            autoTimeoutId = _setTimeout(() => {
                 this.removeNotification(notification, () => resolvePromise());
             }, timeout);
         }
@@ -224,7 +236,7 @@ class ZenNotification {
         const returnObject = {
             element: notification,
             close: () => {
-                clearTimeout(autoTimeoutId);
+                _clearTimeout(autoTimeoutId);
                 this.removeNotification(notification, () => resolvePromise());
             },
             onClose: async () => {
@@ -281,12 +293,11 @@ class ZenNotification {
         text = text || "Dismissing in {time}s";
         element.textContent = text.replace(`{time}`, remainingTime);
 
-        const interval = setInterval(() => {
+        const interval = _setInterval(() => {
             remainingTime--;
-            console.log(`Countdown: ${remainingTime}`);
             element.textContent = text.replace(`{time}`, remainingTime);
             if (remainingTime <= 0) {
-                clearInterval(interval);
+                _clearInterval(interval);
                 this.removeNotification(notification, resolve);
             }
         }, 1000);
