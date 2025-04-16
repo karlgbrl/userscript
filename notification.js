@@ -181,6 +181,9 @@ class ZenNotification {
         const { type = 'default', buttons = [], countdown = false, countdownText = `Dismissing in {time}s` } = options;
         let autoTimeoutId;
         let resolvePromise;
+        const onClosePromise = new Promise(resolve => {
+            resolvePromise = resolve;
+        });
 
         const notification = document.createElement('div');
         notification.classList.add('zen-notification', type);
@@ -217,10 +220,6 @@ class ZenNotification {
             notification.classList.add('show');
         });
         this.notifications.push({ element: notification, timeoutId: countdown ? null : autoTimeoutId });
-
-        const onClosePromise = new Promise(resolve => {
-            resolvePromise = resolve;
-        });
 
         const returnObject = {
             element: notification,
@@ -279,10 +278,12 @@ class ZenNotification {
 
     startCountdown(element, timeout, text, notification, resolve) {
         let remainingTime = Math.ceil(timeout / 1000);
+        text = text || "Dismissing in {time}s";
         element.textContent = text.replace(`{time}`, remainingTime);
 
         const interval = setInterval(() => {
             remainingTime--;
+            console.log(`Countdown: ${remainingTime}`);
             element.textContent = text.replace(`{time}`, remainingTime);
             if (remainingTime <= 0) {
                 clearInterval(interval);
