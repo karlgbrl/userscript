@@ -283,11 +283,10 @@ class ZenNotification {
 
         const interval = setInterval(() => {
             remainingTime--;
+            element.textContent = text.replace(`{time}`, remainingTime);
             if (remainingTime <= 0) {
                 clearInterval(interval);
                 this.removeNotification(notification, resolve);
-            } else {
-                element.textContent = text.replace(`{time}`, remainingTime);
             }
         }, 1000);
         
