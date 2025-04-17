@@ -220,18 +220,23 @@ class ZenNotification {
             countdownElement = document.createElement('div');
             countdownElement.classList.add('zen-notification-countdown');
             notification.appendChild(countdownElement);
-            this.startCountdown(countdownElement, timeout, countdownText, notification, () => resolvePromise());
-        } else {
-            autoTimeoutId = setTimeout(() => {
-                this.removeNotification(notification, () => resolvePromise());
-            }, timeout);
         }
 
         this.container.appendChild(notification);
         requestAnimationFrame(() => {
             notification.classList.add('show');
         });
-        this.notifications.push({ element: notification, timeoutId: countdown ? null : autoTimeoutId });
+
+        const notificationData = { element: notification, timeoutId: countdown ? null : autoTimeoutId };
+        this.notifications.push(notificationData);
+
+        if (countdown) {
+            this.startCountdown(countdownElement, timeout, countdownText, notification, () => resolvePromise());
+        } else {
+            autoTimeoutId = _setTimeout(() => {
+                this.removeNotification(notification, () => resolvePromise());
+            }, timeout);
+        }
 
         const returnObject = {
             element: notification,
