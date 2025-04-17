@@ -288,39 +288,40 @@ class ZenNotification {
         });
     }
 
-    startCountdown(element, timeout, text, notification, resolve) {
+    async startCountdown(element, timeout, text, notification, resolve) {
         let remainingTime = Math.ceil(timeout / 1000);
         text = text || "Dismissing in {time}s";
-        element.textContent = text.replace(`{time}`, remainingTime);
-        const interval = setInterval(() => {
-            remainingTime--;
-            console.log(remainingTime);
-            element.textContent = text.replace(`{time}`, remainingTime);
-            if (remainingTime <= 0) {
-                clearInterval(interval);
-                this.removeNotification(notification, resolve);
-            }
-        }, 1000);
-        
+    
         const notificationData = this.notifications.find(n => n.element === notification);
-        if (notificationData) {
-            notificationData.timeoutId = interval;
+        notificationData.timeoutId = Symbol("manualCountdown"); // Just a marker
+    
+        const currentId = notificationData.timeoutId;
+        element.textContent = text.replace(`{time}`, remainingTime);
+    
+        const sleep = (ms) => new Promise(r => _setTimeout(r, ms));
+    
+        while (remainingTime > 0 && notificationData.timeoutId === currentId) {
+            await sleep(1000);
+            remainingTime--;
+            element.textContent = text.replace(`{time}`, remainingTime);
+        }
+    
+        if (notificationData.timeoutId === currentId) {
+            this.removeNotification(notification, resolve);
         }
     }
 
     removeNotification(notificationElement, resolve) {
         notificationElement.classList.remove('show');
         const notificationData = this.notifications.find(n => n.element === notificationElement);
-        if (notificationData && notificationData.timeoutId) {
-            clearInterval(notificationData.timeoutId);
+        if (notificationData) {
+            notificationData.timeoutId = null;
         }
-        setTimeout(() => {
+        _setTimeout(() => {
             notificationElement.remove();
             this.notifications = this.notifications.filter(n => n.element !== notificationElement);
             this.recalculatePositions();
-            if (resolve) {
-                resolve();
-            }
+            if (resolve) resolve();
         }, 300);
     }
 
