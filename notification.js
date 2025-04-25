@@ -1,4 +1,3 @@
-// Save clean native versions before the site messes with them
 const _setInterval = window.setInterval.bind(window);
 const _clearInterval = window.clearInterval.bind(window);
 const _setTimeout = window.setTimeout.bind(window);
@@ -12,243 +11,246 @@ Object.defineProperty(window, 'setInterval', {
 
 class ZenNotification {
     constructor() {
-        this.styleInjected = false;
         this.notifications = [];
-        this.addGlobalStyles();
+        this.containerMap = new Map();
+        this.addGlobalStyles(); // Keep global styles for basic structure
     }
 
     addGlobalStyles() {
-        if (!this.styleInjected) {
+        if (!document.querySelector('.zen-notification-styles-injected')) {
             const style = document.createElement('style');
             style.textContent = `
-                .zen-notification-container {
-                    position: fixed;
-                    top: 20px;
-                    right: 20px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-end;
-                    z-index: 9999999999;
-                    pointer-events: none;
-                    width: 50%;
-                    max-width: 80%;
-                }
-
-                .zen-notification {
-                    background: #0f0f0f !important;
-                    opacity: 0.9;
-                    border: 1.5px solid;
-                    padding: 15px;
-                    border-radius: 5px;
-                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-                    font-family: 'Roboto', sans-serif;
-                    color: #fff;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    box-sizing: border-box;
-                    word-wrap: break-word;
-                    overflow-wrap: break-word;
-                    margin-top: 10px;
-                    transition: all 0.3s ease-in-out;
-                    transform: translateX(110%);
-                    pointer-events: auto;
-                    width: 100%;
-                    max-width: 400px;
-                }
-
-                .zen-notification.show {
-                    transform: translateX(0);
-                }
-
-                .zen-notification-title {
-                    color: #f0f0f0 !important;
-                    text-align: left !important;
-                    margin: 0 !important;
-                    padding: 0 !important;
-                    font-weight: bold !important;
-                    font-size: 1.1em !important;
-                    font-family: 'Roboto', sans-serif !important;
-                    display: flex !important;
-                    align-items: center !important;
-                    gap: 10px !important;
-                    white-space: nowrap !important;
-                }
-
-                .zen-notification-message {
-                    color: #f0f0f0 !important;
-                    text-align: left !important;
-                    margin: 5px 0 0 0 !important;
-                    padding: 0 !important;
-                    font-size: 0.9em !important;
-                    font-family: 'Roboto', sans-serif !important;
-                    white-space: normal !important;
-                    overflow: hidden !important;
-                    text-overflow: ellipsis !important;
-                    width: 100% !important;
-                    display: -webkit-box !important;
-                    -webkit-line-clamp: 1 !important;
-                    -webkit-box-orient: vertical !important;
-                }
-
-                .zen-notification-buttons {
-                    display: flex;
-                    gap: 5px;
-                    width: 100%;
-                    margin-top: 10px;
-                }
-
-                .zen-notification-button {
-                    padding: 8px 16px;
-                    border: none;
-                    border-radius: 5px;
-                    color: white;
-                    cursor: pointer;
-                    font-family: 'Roboto', sans-serif;
-                    transition: background-color 0.3s ease;
-                    width: 100%;
-                    box-sizing: border-box;
-                    font-size: 0.9em;
-                }
-
-                .zen-notification-button:hover {
-                    filter: brightness(1.1);
-                }
-
-                .zen-notification-countdown {
-                    margin-top: 5px;
-                    font-size: smaller;
-                    opacity: 0.7;
-                }
-
-                .zen-notification.redirect { border-color: #ed4e59; }
-                .zen-notification.key { border-color: #3fe879; }
-                .zen-notification.error { border-color: #d82b2b; }
-                .zen-notification.status { border-color: #e87c3f; }
-                .zen-notification.default { border-color: #4154b0; }
-
-                .copy-button { background-color: #61c779; }
-                .copy-button:hover { background-color: #38C95A; }
-
-                .redirect-button { background-color: #cc7835; }
-                .redirect-button:hover { background-color: #805634; }
-
-                .close-button { background-color:rgb(230, 61, 61)}
-                .close-button:hover { background-color:rgb(115, 30, 30)}
-
-                .zen-notification.redirect .zen-notification-title i { color: #ed4e59; }
-                .zen-notification.key .zen-notification-title i { color: #3fe879; }
-                .zen-notification.error .zen-notification-title i { color: #d82b2b; }
-                .zen-notification.status .zen-notification-title i { color: #e87c3f; }
-                .zen-notification.default .zen-notification-title i { color: #4154b0; }
-
-                @media (max-width: 768px) {
-                    .zen-notification-container {
-                        width: 95%;
-                        right: auto;
-                        left: 2.5%;
-                        align-items: center;
-                    }
-                    .zen-notification {
-                        width: 100%;
-                        max-width: none;
-                    }
-                    .zen-notification-title {
-                        font-size: 1em;
-                    }
-                    .zen-notification-message {
-                        font-size: 0.85em;
-                    }
-                    .zen-notification-button {
-                        font-size: 0.85em;
-                        padding: 6px 12px;
-                    }
-                }
-
-                @media (max-width: 480px) {
-                    .zen-notification-title {
-                        font-size: 0.9em;
-                    }
-                    .zen-notification-message {
-                        font-size: 0.8em;
-                    }
-                    .zen-notification-button {
-                        font-size: 0.8em;
-                        padding: 5px 10px;
-                    }
-                }
+            .zen-notification-container {
+                position: fixed !important;
+                z-index: 9999999999 !important;
+                pointer-events: none !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 10px !important;
+                width: auto !important;
+            }
+            .zen-notification-container.top-left { top: 20px !important; left: 20px !important; align-items: flex-start !important; }
+            .zen-notification-container.top-right { top: 20px !important; right: 20px !important; align-items: flex-end !important; }
+            .zen-notification-container.bottom-left { bottom: 20px !important; left: 20px !important; align-items: flex-start !important; }
+            .zen-notification-container.bottom-right { bottom: 20px !important; right: 20px !important; align-items: flex-end !important; }
+            .zen-notification-container.top-center { top: 20px !important; left: 50% !important; transform: translateX(-50%) !important; align-items: center !important; }
+            .zen-notification-container.bottom-center { bottom: 20px !important; left: 50% !important; transform: translateX(-50%) !important; align-items: center !important; }
+            .zen-notification-container.center { top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important; align-items: center !important; }
+            .zen-notification {
+                background: rgba(31, 31, 31, 0.65) !important;
+                backdrop-filter: blur(12px) !important;
+                -webkit-backdrop-filter: blur(12px) !important;
+                opacity: 0.95 !important;
+                border: 1px solid rgba(255,255,255,0.1) !important;
+                padding: 16px !important;
+                border-radius: 12px !important;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.3) !important;
+                font-family: 'Roboto', sans-serif !important;
+                color: #fff !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 10px !important;
+                width: 380px !important;
+                max-width: 90vw !important;
+                word-break: break-word !important;
+                overflow-wrap: break-word !important;
+                pointer-events: auto !important;
+                transform: translateY(20px) !important;
+                opacity: 0 !important;
+                transition: transform 0.3s ease, opacity 0.3s ease !important;
+            }
+            .zen-notification.show { transform: translateY(0) !important; opacity: 1 !important; }
+            .zen-notification-title {
+                display: flex !important;
+                align-items: center !important;
+                gap: 10px !important;
+                font-size: 1.05rem !important;
+                font-weight: 600 !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+                padding-bottom: 8px !important;
+            }
+            .zen-notification-message {
+                font-size: 0.95rem !important;
+                line-height: 1.5 !important;
+                opacity: 0.85 !important;
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+                white-space: normal !important;
+                text-align: left !important;
+                max-height: 4.2em !important;
+                overflow: hidden !important;
+                position: relative !important;
+                transition: max-height 0.3s ease !important;
+            }
+            .zen-notification-message.expanded { max-height: 1000px !important; }
+            .zen-notification-buttons { display: flex !important; gap: 8px !important; flex-wrap: wrap !important; }
+            .zen-notification-button {
+                flex: 1 !important;
+                padding: 8px 12px !important;
+                border-radius: 6px !important;
+                border: none !important;
+                background: #444 !important;
+                color: #fff !important;
+                font-size: 0.9rem !important;
+                cursor: pointer !important;
+                transition: background 0.2s ease !important;
+            }
+            .zen-notification-button:hover { background: #555 !important; }
+            .zen-progress-bar { height: 4px !important; width: 100% !important; background: rgba(255, 255, 255, 0.1) !important; overflow: hidden !important; border-radius: 2px !important; position: relative !important; }
+            .zen-progress-bar-fill { height: 100% !important; width: 0% !important; background: #3fe879 !important; position: absolute !important; left: 0 !important; top: 0 !important; will-change: width !important; }
+            .zen-expand-button { background: none !important; color: #3fe879 !important; font-size: 0.85rem !important; padding: 0 !important; border: none !important; cursor: pointer !important; margin-left: 8px !important; opacity: 0 !important; transition: opacity 0.2s ease !important; }
+            .zen-expand-wrapper { display: flex !important; align-items: center !important; justify-content: space-between !important; gap: 6px !important; }
+            .zen-expand-wrapper:hover .zen-expand-button { opacity: 1 !important; }
+            .zen-notification-countdown { font-size: 0.75rem !important; }
+            .zen-notification.redirect {  border-color: #ed4e59 !important; box-shadow: 0 0 20px rgba(237, 78, 89, 0.4) !important; }
+            .zen-notification.key {  border-color: #3fe879 !important; box-shadow: 0 0 20px rgba(63, 232, 121, 0.4) !important; }
+            .zen-notification.error { border-color: #d82b2b !important; box-shadow: 0 0 20px rgba(216, 43, 43, 0.4) !important; }
+            .zen-notification.status { border-color: #e87c3f !important; box-shadow: 0 0 20px rgba(232, 124, 63, 0.4) !important; }
+            .zen-notification.default { border-color: #4154b0 !important; box-shadow: 0 0 20px rgba(65, 84, 176, 0.4) !important; }
+            @media (max-width: 768px) {
+                .zen-notification { width: 90vw !important; font-size: 0.85rem !important; padding: 12px !important; }
+                .zen-notification-title { font-size: 0.95rem !important; }
+                .zen-notification-message { font-size: 0.85rem !important; }
+                .zen-notification-button { font-size: 0.85rem !important; padding: 6px 10px !important; }
+            }
+            @media (max-width: 480px) {
+                .zen-notification { font-size: 0.8rem !important; }
+                .zen-notification-title { font-size: 0.9rem !important; }
+                .zen-notification-message { font-size: 0.8rem !important; }
+                .zen-notification-button { font-size: 0.8rem !important; padding: 5px 8px !important; }
+            }
             `;
             style.classList.add('zen-notification-styles-injected');
             document.head.appendChild(style);
-            this.styleInjected = true;
-
-            this.container = document.createElement('div');
-            this.container.classList.add('zen-notification-container');
-            document.body.appendChild(this.container);
         }
+    }
+
+    setPosition(position = 'top-right') {
+        if (!this.containerMap.has(position)) {
+            const container = document.createElement('div');
+            container.classList.add('zen-notification-container', position);
+            document.body.appendChild(container);
+            this.containerMap.set(position, container);
+        }
+        this.container = this.containerMap.get(position);
+    }
+
+    renderMessage(html) {
+        const div = document.createElement('div');
+        div.classList.add('zen-notification-message');
+        div.innerHTML = html;
+        return div;
+    }
+
+    addExpandButton(messageElement) {
+        requestAnimationFrame(() => {
+            const lineHeight = parseFloat(getComputedStyle(messageElement).lineHeight) || 20;
+            const lines = Math.round(messageElement.scrollHeight / lineHeight);
+            if (lines > 3) {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'zen-expand-wrapper';
+
+                const toggleBtn = document.createElement('button');
+                toggleBtn.className = 'zen-expand-button';
+                toggleBtn.innerHTML = '▼';
+                toggleBtn.addEventListener('click', () => {
+                    messageElement.classList.toggle('expanded');
+                    toggleBtn.innerHTML = messageElement.classList.contains('expanded') ? '▲' : '▼';
+                });
+
+                messageElement.parentNode.insertBefore(wrapper, messageElement.nextSibling);
+                wrapper.appendChild(messageElement);
+                wrapper.appendChild(toggleBtn);
+            }
+        });
     }
 
     notify(title, message, timeout = 5000, options = {}) {
         this.ensureDependencies();
-        const { type = 'default', buttons = [], countdown = false, countdownText = `Dismissing in {time}s` } = options;
+        const { type = 'default', buttons = [], countdown = false, countdownText = `Dismissing in {time}s`, position = 'top-right', showProgress = false,
+            style = {}
+        } = options;
+        this.setPosition(position);
         let autoTimeoutId;
         let resolvePromise;
         const onClosePromise = new Promise(resolve => {
             resolvePromise = resolve;
         });
-
         const notification = document.createElement('div');
         notification.classList.add('zen-notification', type);
+		
+        Object.assign(notification.style, style.container);
 
-        const titleElement = document.createElement('h3');
+        const titleElement = document.createElement('div');
         titleElement.classList.add('zen-notification-title');
         titleElement.innerHTML = `<i class="fas ${this.getIconClass(type)}"></i> ${title}`;
+		
+        Object.assign(titleElement.style, style.title);
         notification.appendChild(titleElement);
 
-        const messageElement = document.createElement('p');
+        const messageElement = document.createElement('div');
         messageElement.classList.add('zen-notification-message');
         messageElement.textContent = message;
+		
+        Object.assign(messageElement.style, style.message);
         notification.appendChild(messageElement);
+
+        const expandBtn = this.addExpandButton(messageElement);
+        if (expandBtn) notification.appendChild(expandBtn);
 
         const buttonContainer = document.createElement('div');
         buttonContainer.classList.add('zen-notification-buttons');
-        this.createButtons(buttonContainer, buttons, notification, () => resolvePromise());
-        notification.appendChild(buttonContainer);
+		
+        Object.assign(buttonContainer.style, style.buttonsContainer);
+        this.createButtons(buttonContainer, buttons.slice(0, 2), notification, style.button, () => resolvePromise()); // Pass button styles
+        if (buttons.length) notification.appendChild(buttonContainer);
 
-        let countdownElement;
-        if (countdown) {
-            countdownElement = document.createElement('div');
-            countdownElement.classList.add('zen-notification-countdown');
-            notification.appendChild(countdownElement);
+        if (showProgress && timeout !== null) {
+            const progressBar = document.createElement('div');
+            progressBar.classList.add('zen-notification-bar');
+			
+            Object.assign(progressBar.style, style.progressBar);
+            const fill = document.createElement('div');
+            fill.classList.add('zen-notification-bar-fill');
+            fill.style.transition = `width ${timeout}ms linear`;
+			
+            Object.assign(fill.style, style.progressBarFill);
+            progressBar.appendChild(fill);
+            notification.appendChild(progressBar);
+            this.container.appendChild(notification);
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    fill.style.width = '100%';
+                });
+            });
         }
 
         this.container.appendChild(notification);
-        requestAnimationFrame(() => {
-            notification.classList.add('show');
-        });
+        requestAnimationFrame(() => notification.classList.add('show'));
 
-        const notificationData = { element: notification, timeoutId: countdown ? null : autoTimeoutId };
-        this.notifications.push(notificationData);
-
-        if (countdown) {
+        if (countdown && timeout !== null) {
+            const countdownElement = document.createElement('div');
+            countdownElement.classList.add('zen-notification-countdown');
+			
+            Object.assign(countdownElement.style, style.countdown);
+            notification.appendChild(countdownElement);
             this.startCountdown(countdownElement, timeout, countdownText, notification, () => resolvePromise());
-        } else {
+        } else if (timeout !== null) {
             autoTimeoutId = _setTimeout(() => {
                 this.removeNotification(notification, () => resolvePromise());
             }, timeout);
         }
 
-        const returnObject = {
+        return {
             element: notification,
             close: () => {
-                clearTimeout(autoTimeoutId);
+                _clearTimeout(autoTimeoutId);
                 this.removeNotification(notification, () => resolvePromise());
             },
-            onClose: async () => {
+            onClosed: async () => {
                 await onClosePromise;
             }
         };
-        return returnObject;
     }
 
     ensureDependencies() {
@@ -282,13 +284,9 @@ class ZenNotification {
             const btn = document.createElement('button');
             btn.textContent = button.text;
             btn.classList.add('zen-notification-button', ...(button.className ? button.className.split(' ') : []));
-            if (button.onClick) {
-                btn.addEventListener('click', () => {
-                    button.onClick(this, btn, notificationElement);
-                });
-            } else if (button.closeOnClick !== false) {
-                btn.addEventListener('click', () => this.removeNotification(notificationElement, resolve));
-            }
+            btn.addEventListener('click', () => {
+                if (button.onClick) button.onClick(this, btn, notificationElement);
+            });
             container.appendChild(btn);
         });
     }
@@ -296,21 +294,16 @@ class ZenNotification {
     async startCountdown(element, timeout, text, notification, resolve) {
         let remainingTime = Math.ceil(timeout / 1000);
         text = text || "Dismissing in {time}s";
-    
-        const notificationData = this.notifications.find(n => n.element === notification);
-        notificationData.timeoutId = Symbol("manualCountdown"); // Just a marker
-    
+        const notificationData = { element: notification, timeoutId: Symbol("manualCountdown") };
+        this.notifications.push(notificationData);
         const currentId = notificationData.timeoutId;
         element.textContent = text.replace(`{time}`, remainingTime);
-    
         const sleep = (ms) => new Promise(r => _setTimeout(r, ms));
-    
         while (remainingTime > 0 && notificationData.timeoutId === currentId) {
             await sleep(1000);
             remainingTime--;
             element.textContent = text.replace(`{time}`, remainingTime);
         }
-    
         if (notificationData.timeoutId === currentId) {
             this.removeNotification(notification, resolve);
         }
@@ -318,25 +311,11 @@ class ZenNotification {
 
     removeNotification(notificationElement, resolve) {
         notificationElement.classList.remove('show');
-        const notificationData = this.notifications.find(n => n.element === notificationElement);
-        if (notificationData) {
-            notificationData.timeoutId = null;
-        }
         _setTimeout(() => {
             notificationElement.remove();
             this.notifications = this.notifications.filter(n => n.element !== notificationElement);
-            this.recalculatePositions();
             if (resolve) resolve();
         }, 300);
-    }
-
-    recalculatePositions() {
-        const notifications = this.container.querySelectorAll('.zen-notification');
-        let topPosition = 20;
-        notifications.forEach(notification => {
-            notification.style.top = `${topPosition}px`;
-            topPosition += notification.offsetHeight + 10;
-        });
     }
 }
 
