@@ -49,12 +49,15 @@ async function bypassAdLink(url, refresh = false) {
     return handleApiRequest(apiURL, url, refresh ? 'refresh' : 'bypass', fallbackBypassAdlink);
 }
 
-async function handlePlatoboostLink(url, linkto) {
-    const apiURL = `https://z.rezz.lol/bypass/platoboost?origin=${encodeURIComponent(url)}&linkTo=${encodeURIComponent(linkto)}`;
+async function handlePlatoboostLink(url, linkto = null) {
+    const apiURL = `https://z.rezz.lol/bypass/platoboost?origin=${encodeURIComponent(url)}${linkto ? "&linkTo=" + encodeURIComponent(linkto) : ""}`;
     try {
         const t = await fetch(apiURL);
-        if (!t.ok) 
-            throw new Error("Failed to fetch");
+        if (!t.ok) {
+            const data = await response.json();
+            console.error(`API request failed:`, response.status, data);
+            return data;
+        }
         
         const data = await response.json();
         return data;
