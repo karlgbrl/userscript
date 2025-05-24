@@ -54,12 +54,12 @@ async function handlePlatoboostLink(url, linkto = null) {
     try {
         const t = await fetch(apiURL);
         if (!t.ok) {
-            const data = await response.json();
-            console.error(`API request failed:`, response.status, data);
+            const data = await t.json();
+            console.error(`API request failed:`, t.status, data);
             return data;
         }
         
-        const data = await response.json();
+        const data = await t.json();
         return data;
     } catch (err) {
         console.log("ERROR", err);
