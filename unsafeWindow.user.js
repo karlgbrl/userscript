@@ -13,6 +13,8 @@
 
     if (typeof unsafeWindow !== 'undefined' && unsafeWindow !== null) {
         alert("unsafeWindow IS available!");
+    } else {
+        alert("unsafeWindow DOES NOT exist!");
     }
 
 })();
