@@ -480,6 +480,7 @@ function redirectButton(url, customText = "Go to link") {
 }
 
 function buttonsHandle(data) {
+    function isValidURL(n){try{return new URL(n),!0}catch{return!1}}
     const buttons = [copyButton(data)];
     if (isValidURL(data)) {
         buttons.push(redirectButton(data))
