@@ -510,6 +510,7 @@ function keyNotification(config, key, customText = 'Got Key') {
 }
 
 async function redirectNotification(config, url) {
+    async function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
     const enabled = config.enabled;
     const wait = enabled ? config.wait * 1000 : null;
     zennify.notify("Bypassed Result", url, wait, {
