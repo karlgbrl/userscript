@@ -481,7 +481,18 @@ function redirectButton(url, customText = "Go to link") {
 }
 
 function buttonsHandle(data) {
-    function isValidURL(n){try{return new URL(n),!0}catch{return!1}}
+    function isValidURL(urlString) {
+        try {
+            const url = new URL(urlString);
+            const isWebProtocol = url.protocol === 'http:' || url.protocol === 'https:';
+            const hasValidHostname = url.hostname && url.hostname !== '';
+            const isNotSpecialScheme = !['javascript:', 'data:', 'mailto:', 'tel:', 'blob:'].includes(url.protocol);
+            const hasCorrectStructure = url.pathname === '/' || url.pathname.startsWith('/') && !url.pathname.startsWith('//');
+            return isWebProtocol && hasValidHostname && isNotSpecialScheme && hasCorrectStructure;
+        } catch (e) {
+            return false;
+        }
+    }
     const buttons = [copyButton(data)];
     if (isValidURL(data)) {
         buttons.push(redirectButton(data))
@@ -512,12 +523,24 @@ function keyNotification(config, key, customText = 'Got Key') {
 
 async function redirectNotification(config, url) {
     const sleep = (ms) => new Promise(r => _setTimeout(r, ms));
+    function isValidURL(urlString) {
+        try {
+            const url = new URL(urlString);
+            const isWebProtocol = url.protocol === 'http:' || url.protocol === 'https:';
+            const hasValidHostname = url.hostname && url.hostname !== '';
+            const isNotSpecialScheme = !['javascript:', 'data:', 'mailto:', 'tel:', 'blob:'].includes(url.protocol);
+            const hasCorrectStructure = url.pathname === '/' || url.pathname.startsWith('/') && !url.pathname.startsWith('//');
+            return isWebProtocol && hasValidHostname && isNotSpecialScheme && hasCorrectStructure;
+        } catch (e) {
+            return false;
+        }
+    }
     const enabled = config.enabled;
     const wait = enabled ? config.wait * 1000 : null;
     zennify.notify("Bypassed Result", url, wait, {
         type:"key", buttons: buttonsHandle(url), countdown: enabled ? true : false, countdownText: "Please wait while we redirect you in {time}s"
     })
-    if (enabled) {
+    if (enabled && isValidURL(url)) {
         await sleep(wait);
         window.location.href = url;
     }
