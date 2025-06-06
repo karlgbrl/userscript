@@ -76,7 +76,7 @@ class ZenNotification {
             color: #fff !important;
             display: flex !important;
             flex-direction: column !important;
-            gap: 10px !important;
+            gap: 6px !important;
             width: 380px !important;
             max-width: 90vw !important;
             word-break: break-word !important;
@@ -93,11 +93,11 @@ class ZenNotification {
         .${this.prefix}-notification-title {
             display: flex !important;
             align-items: center !important;
-            gap: 10px !important;
+            gap: 6px !important;
             font-size: 1.05rem !important;
             font-weight: 600 !important;
             border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
-            padding-bottom: 8px !important;
+            padding-bottom: 6px !important;
         }
         .${this.prefix}-notification-message {
             font-size: 0.95rem !important;
