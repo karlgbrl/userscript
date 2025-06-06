@@ -535,7 +535,8 @@ async function redirectNotification(config, url) {
             return false;
         }
     }
-    const enabled = config.enabled;
+    const isURL = isValidURL(url);
+    const enabled = config.enabled && isURL;
     const wait = enabled ? config.wait * 1000 : null;
     zennify.notify("Bypassed Result", url, wait, {
         type:"key", buttons: buttonsHandle(url), countdown: enabled ? true : false, countdownText: "Please wait while we redirect you in {time}s"
