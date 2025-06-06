@@ -462,6 +462,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
 });
 
 function copyButton(textToCopy) {
+    const sleep = (ms) => new Promise(r => _setTimeout(r, ms));
     textToCopy = textToCopy.trim();
     return {
         text: "Copy",
@@ -510,7 +511,7 @@ function keyNotification(config, key, customText = 'Got Key') {
 }
 
 async function redirectNotification(config, url) {
-    async function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
+    const sleep = (ms) => new Promise(r => _setTimeout(r, ms));
     const enabled = config.enabled;
     const wait = enabled ? config.wait * 1000 : null;
     zennify.notify("Bypassed Result", url, wait, {
@@ -522,7 +523,7 @@ async function redirectNotification(config, url) {
     }
 }
 
-function errorNotification(message, timeout = 60 * 1000) {
+function errorNotification(message, timeout = 10 * 1000) {
     zennify.notify("Error", message, timeout, {
         type: `error`,
         buttons: [
