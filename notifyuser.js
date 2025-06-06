@@ -509,6 +509,18 @@ function keyNotification(config, key, customText = 'Got Key') {
     }
 }
 
+async function redirectNotification(config, url) {
+    const enabled = config.enabled;
+    const wait = enabled ? config.wait * 1000 : null;
+    zennify.notify("Bypassed Result", url, wait, {
+        type:"key", buttons: buttonsHandle(url), countdown: enabled ? true : false, countdownText: "Please wait while we redirect you in {time}s"
+    })
+    if (enabled) {
+        await sleep(wait);
+        window.location.href = url;
+    }
+}
+
 function errorNotification(message, timeout = 60 * 1000) {
     zennify.notify("Error", message, timeout, {
         type: `error`,
