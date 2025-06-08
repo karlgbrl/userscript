@@ -76,7 +76,7 @@ class ZenNotification {
             color: #fff !important;
             display: flex !important;
             flex-direction: column !important;
-            gap: 10px !important;
+            gap: 6px !important;
             width: 380px !important;
             max-width: 90vw !important;
             word-break: break-word !important;
@@ -93,11 +93,11 @@ class ZenNotification {
         .${this.prefix}-notification-title {
             display: flex !important;
             align-items: center !important;
-            gap: 10px !important;
+            gap: 6px !important;
             font-size: 1.05rem !important;
             font-weight: 600 !important;
             border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
-            padding-bottom: 8px !important;
+            padding-bottom: 6px !important;
         }
         .${this.prefix}-notification-message {
             font-size: 0.95rem !important;
@@ -460,3 +460,98 @@ var zennify;
 window.addEventListener("DOMContentLoaded", function(event) {
     zennify = new ZenNotification();
 });
+
+function copyButton(textToCopy) {
+    const sleep = (ms) => new Promise(r => _setTimeout(r, ms));
+    textToCopy = textToCopy.trim();
+    return {
+        text: "Copy",
+        onClick: async (instance, element, notification) => {
+            const originalText = element.textContent;
+            GM_setClipboard(textToCopy);
+            element.textContent = "Copied";
+            await sleep(1000);
+            element.textContent = originalText;
+        }
+    }
+}
+
+function redirectButton(url, customText = "Go to link") {
+    return { text: customText, onClick: () => { window.location.href=url; }}
+}
+
+function buttonsHandle(data) {
+    function isValidURL(urlString) {
+        try {
+            const url = new URL(urlString);
+            const isWebProtocol = url.protocol === 'http:' || url.protocol === 'https:';
+            const hasValidHostname = url.hostname && url.hostname !== '';
+            const isNotSpecialScheme = !['javascript:', 'data:', 'mailto:', 'tel:', 'blob:'].includes(url.protocol);
+            const hasCorrectStructure = url.pathname === '/' || url.pathname.startsWith('/') && !url.pathname.startsWith('//');
+            return isWebProtocol && hasValidHostname && isNotSpecialScheme && hasCorrectStructure;
+        } catch (e) {
+            return false;
+        }
+    }
+    const buttons = [copyButton(data)];
+    if (isValidURL(data)) {
+        buttons.push(redirectButton(data))
+    } else {
+        buttons.push({
+            text:"Close",
+            className: "close-button",
+            onClick: (instance, element, notification) => {
+                instance.removeNotification(notification, () => {});
+            }
+        });
+    }
+    return buttons;
+}
+
+function keyNotification(config, key, customText = 'Got Key') {
+    zennify.notify(customText, key, null, {
+        type: "key",
+        buttons: [
+            copyButton(key)
+        ],
+    });
+    if (config) {
+        GM_setClipboard(key);
+        zennify.single(`${customText.includes("Key") ? "Key" : "Paste"} has been copied to your clipboard.`, 10000, {type:"key",position:"top-right"})
+    }
+}
+
+async function redirectNotification(config, url) {
+    const sleep = (ms) => new Promise(r => _setTimeout(r, ms));
+    function isValidURL(urlString) {
+        try {
+            const url = new URL(urlString);
+            const isWebProtocol = url.protocol === 'http:' || url.protocol === 'https:';
+            const hasValidHostname = url.hostname && url.hostname !== '';
+            const isNotSpecialScheme = !['javascript:', 'data:', 'mailto:', 'tel:', 'blob:'].includes(url.protocol);
+            const hasCorrectStructure = url.pathname === '/' || url.pathname.startsWith('/') && !url.pathname.startsWith('//');
+            return isWebProtocol && hasValidHostname && isNotSpecialScheme && hasCorrectStructure;
+        } catch (e) {
+            return false;
+        }
+    }
+    const isURL = isValidURL(url);
+    const enabled = config.enabled && isURL;
+    const wait = enabled ? config.wait * 1000 : null;
+    zennify.notify("Bypassed Result", url, wait, {
+        type:"key", buttons: buttonsHandle(url), countdown: enabled ? true : false, countdownText: "Please wait while we redirect you in {time}s"
+    })
+    if (enabled && isValidURL(url)) {
+        await sleep(wait);
+        window.location.href = url;
+    }
+}
+
+function errorNotification(message, timeout = 10 * 1000) {
+    zennify.notify("Error", message, timeout, {
+        type: `error`,
+        buttons: [
+            copyButton(message),
+        ],
+    })
+}
