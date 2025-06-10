@@ -353,6 +353,55 @@ class ZenNotification {
         };
     }
 
+    single(message, timeout = 5000, options = {}) {
+        this.ensureDependencies();
+        const { type = 'default', position = 'top-center' } = options;
+        
+        this.setPosition(position);
+        
+        let autoTimeoutId;
+        let resolvePromise;
+        const onClosePromise = new Promise(resolve => {
+            resolvePromise = resolve;
+        });
+
+        const notification = document.createElement('div');
+        notification.className = `${this.prefix}-notification ${type}`;
+        notification.style.padding = '10px 20px';
+        notification.style.gap = '0';
+        notification.style.flexDirection = 'row';
+
+        const messageElement = document.createElement('div');
+        messageElement.className = `${this.prefix}-notification-message ${this.prefix}-single-notification-message`;
+        messageElement.textContent = message;
+        notification.appendChild(messageElement);
+
+        this.container.shadowRoot.querySelector(`.${this.prefix}-notification-container`).appendChild(notification);
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                notification.classList.add('show');
+            });
+        });
+
+        if (timeout !== null) {
+            autoTimeoutId = _setTimeout(() => {
+                this.removeNotification(notification, () => resolvePromise());
+            }, timeout);
+        }
+
+        return {
+            element: notification,
+            close: () => {
+                _clearTimeout(autoTimeoutId);
+                this.removeNotification(notification, () => resolvePromise());
+            },
+            onClosed: async () => {
+                await onClosePromise;
+            }
+        };
+    }
+
     ensureDependencies() {
         if (!document.querySelector('link[href*="fonts.googleapis.com"]')) {
             const link = document.createElement('link');
