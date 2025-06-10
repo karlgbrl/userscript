@@ -16,207 +16,208 @@ class ZenNotification {
         *, *::before, *::after {
             box-sizing: border-box;
         }
+        
         .${this.prefix}-notification-container {
-            position: fixed !important;
-            z-index: 9999999999 !important;
-            pointer-events: none !important;
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 10px !important;
-            width: auto !important;
+            position: fixed;
+            z-index: 9999999999;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: auto;
         }
         .${this.prefix}-notification-container.top-left { 
-            top: 20px !important; 
-            left: 20px !important; 
-            align-items: flex-start !important; 
+            top: 20px; 
+            left: 20px; 
+            align-items: flex-start; 
         }
         .${this.prefix}-notification-container.top-right { 
-            top: 20px !important; 
-            right: 20px !important; 
-            align-items: flex-end !important; 
+            top: 20px; 
+            right: 20px; 
+            align-items: flex-end; 
         }
         .${this.prefix}-notification-container.bottom-left { 
-            bottom: 20px !important; 
-            left: 20px !important; 
-            align-items: flex-start !important; 
+            bottom: 20px; 
+            left: 20px; 
+            align-items: flex-start; 
         }
         .${this.prefix}-notification-container.bottom-right { 
-            bottom: 20px !important; 
-            right: 20px !important; 
-            align-items: flex-end !important; 
+            bottom: 20px; 
+            right: 20px; 
+            align-items: flex-end; 
         }
         .${this.prefix}-notification-container.top-center { 
-            top: 20px !important; 
-            left: 50% !important; 
-            transform: translateX(-50%) !important; 
-            align-items: center !important; 
+            top: 20px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            align-items: center; 
         }
         .${this.prefix}-notification-container.bottom-center { 
-            bottom: 20px !important; 
-            left: 50% !important; 
-            transform: translateX(-50%) !important; 
-            align-items: center !important; 
+            bottom: 20px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            align-items: center; 
         }
         .${this.prefix}-notification-container.center { 
-            top: 50% !important; 
-            left: 50% !important; 
-            transform: translate(-50%, -50%) !important; 
-            align-items: center !important; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            align-items: center; 
         }
         .${this.prefix}-notification {
-            background: rgba(31, 31, 31, 0.65) !important;
-            backdrop-filter: blur(12px) !important;
-            -webkit-backdrop-filter: blur(12px) !important;
-            opacity: 0.95 !important;
-            border: 1px solid rgba(255,255,255,0.1) !important;
-            padding: 16px !important;
-            border-radius: 12px !important;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3) !important;
-            font-family: 'Roboto', sans-serif !important;
-            color: #fff !important;
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 6px !important;
-            width: 380px !important;
-            max-width: 90vw !important;
-            word-break: break-word !important;
-            overflow-wrap: break-word !important;
-            pointer-events: auto !important;
-            transform: translateY(20px) !important;
-            opacity: 0 !important;
-            transition: transform 0.3s ease, opacity 0.3s ease !important;
+            background: rgba(31, 31, 31, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            opacity: 0.95;
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            font-family: 'Roboto', sans-serif;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            width: 380px;
+            max-width: 90vw;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            pointer-events: auto;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
         .${this.prefix}-notification.show {
-            transform: translateY(0) !important;
-            opacity: 1 !important;
+            transform: translateY(0);
+            opacity: 1;
         }
         .${this.prefix}-notification-title {
-            display: flex !important;
-            align-items: center !important;
-            gap: 6px !important;
-            font-size: 1.05rem !important;
-            font-weight: 600 !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
-            padding-bottom: 6px !important;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 6px;
         }
         .${this.prefix}-notification-message {
-            font-size: 0.95rem !important;
-            line-height: 1.5 !important;
-            opacity: 0.85 !important;
-            word-wrap: break-word !important;
-            overflow-wrap: break-word !important;
-            white-space: normal !important;
-            text-align: left !important;
-            max-height: 4.2em !important;
-            overflow: hidden !important;
-            position: relative !important;
-            transition: max-height 0.3s ease !important;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            opacity: 0.85;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+            text-align: left;
+            max-height: 4.2em;
+            overflow: hidden;
+            position: relative;
+            transition: max-height 0.3s ease;
         }
         .${this.prefix}-notification-message.expanded {
-            max-height: 1000px !important;
+            max-height: 1000px;
         }
         .${this.prefix}-notification-buttons {
-            display: flex !important;
-            gap: 8px !important;
-            flex-wrap: wrap !important;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
         }
         .${this.prefix}-notification-button {
-            flex: 1 !important;
-            padding: 8px 12px !important;
-            border-radius: 6px !important;
-            border: none !important;
-            background: #444 !important;
-            color: #fff !important;
-            font-size: 0.9rem !important;
-            cursor: pointer !important;
-            transition: background 0.2s ease !important;
+            flex: 1;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: none;
+            background: #444;
+            color: #fff;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.2s ease;
         }
         .${this.prefix}-notification-button:hover {
-            background: #555 !important;
+            background: #555;
         }
         .${this.prefix}-progress-bar {
-            height: 4px !important;
-            width: 100% !important;
-            background: rgba(255, 255, 255, 0.1) !important;
-            overflow: hidden !important;
-            border-radius: 2px !important;
-            position: relative !important;
+            height: 4px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            border-radius: 2px;
+            position: relative;
         }
         .${this.prefix}-progress-bar-fill {
-            height: 100% !important;
-            width: 0% !important;
-            background: #3fe879 !important;
-            position: absolute !important;
-            left: 0 !important;
-            top: 0 !important;
-            will-change: width !important;
+            height: 100%;
+            width: 0%;
+            background: #3fe879;
+            position: absolute;
+            left: 0;
+            top: 0;
+            will-change: width;
         }
         .${this.prefix}-expand-button {
-            background: none !important;
-            color: #3fe879 !important;
-            font-size: 0.85rem !important;
-            padding: 0 !important;
-            border: none !important;
-            cursor: pointer !important;
-            margin-left: 8px !important;
-            opacity: 0 !important;
-            transition: opacity 0.2s ease !important;
+            background: none;
+            color: #3fe879;
+            font-size: 0.85rem;
+            padding: 0;
+            border: none;
+            cursor: pointer;
+            margin-left: 8px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
         }
         .${this.prefix}-expand-wrapper {
-            display: flex !important;
-            align-items: center !important;
-            justify-content: space-between !important;
-            gap: 6px !important;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px;
         }
         .${this.prefix}-expand-wrapper:hover .${this.prefix}-expand-button {
-            opacity: 1 !important;
+            opacity: 1;
         }
         .${this.prefix}-notification-countdown {
-            font-size: 0.75rem !important;
+            font-size: 0.75rem;
         }
         .${this.prefix}-notification.hide {
-            transform: translateY(20px) !important;
-            opacity: 0 !important;
-            transition: transform 0.3s ease-in, opacity 0.3s ease-in !important;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.3s ease-in, opacity 0.3s ease-in;
         }
-        .${this.prefix}-notification.redirect {  border-color: #ed4e59 !important; box-shadow: 0 0 20px rgba(237, 78, 89, 0.4) !important; }
-        .${this.prefix}-notification.key {  border-color: #3fe879 !important; box-shadow: 0 0 20px rgba(63, 232, 121, 0.4) !important; }
-        .${this.prefix}-notification.error { border-color: #d82b2b !important; box-shadow: 0 0 20px rgba(216, 43, 43, 0.4) !important; }
-        .${this.prefix}-notification.status { border-color: #e87c3f !important; box-shadow: 0 0 20px rgba(232, 124, 63, 0.4) !important; }
-        .${this.prefix}-notification.default { border-color: #4154b0 !important; box-shadow: 0 0 20px rgba(65, 84, 176, 0.4) !important; }
+        .${this.prefix}-notification.redirect {  border-color: #ed4e59; box-shadow: 0 0 20px rgba(237, 78, 89, 0.4); }
+        .${this.prefix}-notification.key {  border-color: #3fe879; box-shadow: 0 0 20px rgba(63, 232, 121, 0.4); }
+        .${this.prefix}-notification.error { border-color: #d82b2b; box-shadow: 0 0 20px rgba(216, 43, 43, 0.4); }
+        .${this.prefix}-notification.status { border-color: #e87c3f; box-shadow: 0 0 20px rgba(232, 124, 63, 0.4); }
+        .${this.prefix}-notification.default { border-color: #4154b0; box-shadow: 0 0 20px rgba(65, 84, 176, 0.4); }
         @media (max-width: 768px) {
             .${this.prefix}-notification {
-                width: 90vw !important;
-                font-size: 0.85rem !important;
-                padding: 12px !important;
+                width: 90vw;
+                font-size: 0.85rem;
+                padding: 12px;
             }
             .${this.prefix}-notification-title {
-                font-size: 0.95rem !important;
+                font-size: 0.95rem;
             }
             .${this.prefix}-notification-message {
-                font-size: 0.85rem !important;
+                font-size: 0.85rem;
             }
             .${this.prefix}-notification-button {
-                font-size: 0.85rem !important;
-                padding: 6px 10px !important;
+                font-size: 0.85rem;
+                padding: 6px 10px;
             }
         }
         @media (max-width: 480px) {
             .${this.prefix}-notification {
-                font-size: 0.8rem !important;
+                font-size: 0.8rem;
             }
             .${this.prefix}-notification-title {
-                font-size: 0.9rem !important;
+                font-size: 0.9rem;
             }
             .${this.prefix}-notification-message {
-                font-size: 0.8rem !important;
+                font-size: 0.8rem;
             }
             .${this.prefix}-notification-button {
-                font-size: 0.8rem !important;
-                padding: 5px 8px !important;
+                font-size: 0.8rem;
+                padding: 5px 8px;
             }
         }`;
-            style.classList.add(`${this.prefix}-notification-styles-injected`);
+            style.setAttribute('data-zn-style', '');
             document.head.appendChild(style);
             this.styleInjected = true;
         }
@@ -225,7 +226,17 @@ class ZenNotification {
     setPosition(position = 'top-right') {
         if (!this.containerMap.has(position)) {
             const container = document.createElement('div');
-            container.classList.add(`${this.prefix}-notification-container`, position);
+            container.attachShadow({ mode: 'open' });
+            
+            const style = document.createElement('style');
+            style.textContent = this.generateStyles(); // Move your styles here
+            
+            const wrapper = document.createElement('div');
+            wrapper.className = `${this.prefix}-notification-container ${position}`;
+            
+            container.shadowRoot.appendChild(style);
+            container.shadowRoot.appendChild(wrapper);
+            
             document.body.appendChild(container);
             this.containerMap.set(position, container);
         }
@@ -272,7 +283,7 @@ class ZenNotification {
             resolvePromise = resolve;
         });
         const notification = document.createElement('div');
-        notification.classList.add(`${this.prefix}-notification`, type);
+        notification.className = `${this.prefix}-notification ${type}`;
         const titleElement = document.createElement('div');
         titleElement.classList.add(`${this.prefix}-notification-title`);
         titleElement.innerHTML = `<i class="fas ${this.getIconClass(type)}"></i> ${title}`;
@@ -337,7 +348,7 @@ class ZenNotification {
         });
 
         const notification = document.createElement('div');
-        notification.classList.add(`${this.prefix}-notification`, type);
+        notification.className = `${this.prefix}-notification ${type}`;
         notification.style.padding = '10px 20px';
         notification.style.gap = '0';
         notification.style.flexDirection = 'row';
@@ -370,6 +381,13 @@ class ZenNotification {
                 await onClosePromise;
             }
         };
+    }
+
+    cleanup() {
+        Array.from(document.querySelectorAll(`[data-zn-style]`)).forEach(el => el.remove());
+        this.containerMap.forEach(container => container.remove());
+        this.containerMap.clear();
+        this.styleInjected = false;
     }
 
     ensureDependencies() {
@@ -458,6 +476,9 @@ class ZenNotification {
 
 var zennify;
 window.addEventListener("DOMContentLoaded", function(event) {
+    if (window.zennify) {
+        zennify.cleanup();
+    }
     zennify = new ZenNotification();
 });
 
