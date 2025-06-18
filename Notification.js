@@ -742,7 +742,7 @@ function buttonsHandle(data) {
 }
 
 function keyNotification(config, key, customText = 'Got Key') {
-    zennify.notify(customText, key, null, {
+    const notified = zennify.notify(customText, key, null, {
         type: "key",
         buttons: [
             copyButton(key)
@@ -752,6 +752,7 @@ function keyNotification(config, key, customText = 'Got Key') {
         GM_setClipboard(key);
         zennify.single(`${customText.includes("Key") ? "Key" : "Paste"} has been copied to your clipboard.`, 10000, {type:"key",position:"top-right"})
     }
+    return notified;
 }
 
 async function redirectNotification(config, url) {
@@ -771,20 +772,21 @@ async function redirectNotification(config, url) {
     const isURL = isValidURL(url);
     const enabled = config.enabled && isURL;
     const wait = enabled ? config.wait * 1000 : null;
-    zennify.notify("Bypassed Result", url, wait, {
+    const notified = zennify.notify("Bypassed Result", url, wait, {
         type:"key", buttons: buttonsHandle(url), countdown: enabled ? true : false, countdownText: "Please wait while we redirect you in {time}s"
     })
     if (enabled && isValidURL(url)) {
         await sleep(wait);
         window.location.href = url;
     }
+    return notified;
 }
 
 function errorNotification(message, timeout = 10 * 1000) {
-    zennify.notify("Error", message, timeout, {
+    return zennify.notify("Error", message, timeout, {
         type: `error`,
         buttons: [
             copyButton(message),
         ],
-    })
+    });
 }
