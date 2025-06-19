@@ -710,7 +710,7 @@ function copyButton(textToCopy) {
 }
 
 function redirectButton(url, customText = "Go to link") {
-    return { text: customText, onClick: () => { location.href.assign(url); }}
+    return { text: customText, onClick: () => { window.location.assign(url); }}
 }
 
 function buttonsHandle(data) {
