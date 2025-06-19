@@ -1,137 +1,792 @@
-const getCookie = (name) => {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-    throw new Error(`Cookie "${name}" not found`);
-}
+const _setTimeout = window.setTimeout;
+const _clearTimeout = window.clearTimeout;
 
-function autoclickrecaptcha(){var e=!1,t=!1,n=!1;let o=".recaptcha-checkbox-border",r="#recaptcha-audio-button",c="#audio-source",l=".rc-audiochallenge-response-field",a=".rc-audiochallenge-error-message",i="#audio-response",s="#recaptcha-reload-button",g="#recaptcha-accessible-status",u=".rc-doscaptcha-body",h="#recaptcha-verify-button";var p=0,d=_("html").getAttribute("lang"),$="",f=_(g)?_(g).innerText:"",m=["https://engageub.pythonanywhere.com","https://engageub1.pythonanywhere.com"],y=Array(m.length).fill(1e4);function T(e){return null===e.offsetParent}try{!t&&_(o)&&!T(_(o))&&(_(o).click(),t=!0),_(g)&&_(g).innerText!=f&&(e=!0,console.log("SOLVED")),p>5&&(console.log("Attempted Max Retries. Stopping the solver"),e=!0),_(u)&&_(u).innerText.length>0&&console.log("Automated Queries Detected")}catch(x){console.log(x.message),console.log("An error occurred while solving. Stopping the solver.")}async function v(e){var t=1e5,o="";for(let l=0;l<y.length;l++)y[l]<=t&&(t=y[l],o=m[l]);p+=1,e=e.replace("recaptcha.net","google.com"),d.length<1&&(console.log("Recaptcha Language is not recognized"),d="en-US"),console.log("Recaptcha Language is "+d),GM_xmlhttpRequest({method:"POST",url:o,headers:{"Content-Type":"application/x-www-form-urlencoded"},data:"input="+encodeURIComponent(e)+"&lang="+d,timeout:6e4,onload:function(e){console.log("Response::"+e.responseText);try{if(e&&e.responseText){var t=e.responseText;"0"==t||t.includes("<")||t.includes(">")||t.length<2||t.length>50?console.log("Invalid Response. Retrying.."):_(c)&&_(c).src&&$==_(c).src&&_(i)&&!_(i).value&&"none"==_(r).style.display&&_(h)?(_(i).value=t,_(h).click()):console.log("Could not locate text input box"),n=!1}}catch(o){console.log(o.message),console.log("Exception handling response. Retrying.."),n=!1}},onerror:function(e){console.log(e),n=!1},ontimeout:function(){console.log("Response Timed out. Retrying.."),n=!1}})}async function b(e){var t=new Date().getTime();GM_xmlhttpRequest({method:"GET",url:e,headers:{"Content-Type":"application/x-www-form-urlencoded"},data:"",timeout:8e3,onload:function(n){if(n&&n.responseText&&"0"==n.responseText){var o=new Date().getTime()-t;for(let r=0;r<m.length;r++)e==m[r]&&(y[r]=o)}},onerror:function(e){console.log(e)},ontimeout:function(){console.log("Ping Test Response Timed out for "+e)}})}function w(e){return document.querySelectorAll(e)}function _(e){return document.querySelector(e)}if(_(o))_(o).click();else if(window.location.href.includes("bframe"))for(let R=0;R<m.length;R++)b(m[R]);var S=setInterval(function(){try{!t&&_(o)&&!T(_(o))&&(_(o).click(),t=!0),_(g)&&_(g).innerText!=f&&(e=!0,console.log("SOLVED"),clearInterval(S)),p>5&&(console.log("Attempted Max Retries. Stopping the solver"),e=!0,clearInterval(S)),!e&&(_(r)&&!T(_(r))&&_("#rc-imageselect")&&_(r).click(),!n&&_(c)&&_(c).src&&_(c).src.length>0&&$==_(c).src&&_(s)||_(a)&&_(a).innerText.length>0&&_(s)&&!_(s).disabled?_(s).click():!n&&_(l)&&!T(_(l))&&!_(i).value&&_(c)&&_(c).src&&_(c).src.length>0&&$!=_(c).src&&p<=5&&(n=!0,$=_(c).src,v($))),_(u)&&_(u).innerText.length>0&&(console.log("Automated Queries Detected"),clearInterval(S))}catch(h){console.log(h.message),console.log("An error occurred while solving. Stopping the solver."),clearInterval(S)}},5e3)}
-
-const isValidURL = (urlString) => {
-    try {
-        const url = new URL(urlString);
-        const isWebProtocol = url.protocol === 'http:' || url.protocol === 'https:';
-        const hasValidHostname = url.hostname && url.hostname !== '';
-        const isNotSpecialScheme = !['javascript:', 'data:', 'mailto:', 'tel:', 'blob:'].includes(url.protocol);
-        const hasCorrectStructure = url.pathname === '/' || url.pathname.startsWith('/') && !url.pathname.startsWith('//');
-        return isWebProtocol && hasValidHostname && isNotSpecialScheme && hasCorrectStructure;
-    } catch (e) {
-        return false;
-    }
-}
-
-async function waitClickButton(timer = 0, redirectURL) {
-    const overlay = document.createElement("div");
-    overlay.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(15, 15, 15, 0.85);
-        z-index: 99999999999999999;
-        display: flex;
-        color: #fff;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        backdrop-filter: blur(10px);
-    `;
-
-    const timerDisplay = document.createElement("div");
-    timerDisplay.style.cssText = `
-        font-size: 24px;
-        color: #eee;
-        margin-bottom: 15px;
-        font-family: 'Segoe UI', sans-serif !important;
-        font-weight: 900 !important;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-    `;
-
-    const bypassButton = document.createElement("button");
-    bypassButton.textContent = "Bypass";
-    bypassButton.style.cssText = `
-        padding: 15px 30px;
-        font-size: 16px;
-        border: none;
-        background-color: #007bff;
-        font-family: 'Segoe UI', sans-serif !important;
-        font-weight: 700 !important;
-        color: #fff;
-        cursor: pointer;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        transition: all 0.2s ease-in-out;
-        opacity: 0;
-        transform: translateY(15px);
-        display: none;
-    `;
-
-    bypassButton.style.backgroundImage = "linear-gradient(135deg, #007bff, #0056b3)";
-    bypassButton.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.15)";
-
-    bypassButton.addEventListener("mouseover", () => {
-        bypassButton.style.transform = "scale(1.05)";
-        bypassButton.style.boxShadow = "0 6px 10px rgba(0, 0, 0, 0.2)";
-    });
-
-    bypassButton.addEventListener("mouseout", () => {
-        bypassButton.style.transform = "scale(1)";
-        bypassButton.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.15)";
-        bypassButton.style.backgroundColor = "#007bff";
-        bypassButton.style.backgroundImage = "linear-gradient(135deg, #007bff, #0056b3)";
-    });
-
-    bypassButton.addEventListener("click", () => {
-        window.location.href = redirectURL;
-    });
-
-    overlay.appendChild(timerDisplay);
-    overlay.appendChild(bypassButton);
-    document.body.appendChild(overlay);
-
-    timerDisplay.textContent = `Wait: ${timer}s`;
-
-    while (timer > 0) {
-        await sleep(1000);
-        timer--;
-        timerDisplay.textContent = `Wait: ${timer}s`;
+class ZenNotification {
+    constructor() {
+        this.styleInjected = false;
+        this.notifications = [];
+        this.containerMap = new Map();
+        this.prefix = 'zn-' + Date.now().toString(36); // Unique prefix
+        this.addGlobalStyles();
     }
 
-    if (timer <= 0) {
-        timerDisplay.textContent = "Tap to Continue";
-        bypassButton.style.display = "block";
-        requestAnimationFrame(() => {
-            bypassButton.style.opacity = '1';
-            bypassButton.style.transform = 'translateY(0)';
-        });
-    }
-}
-
-function getAdLink() {
-    let form = document.getElementsByTagName('form')[0];
-    let data = new FormData(form);
-    return new Promise(async (resolve, reject) => {
-        GM_xmlhttpRequest({
-            method: "POST",
-            url: form.action,
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Referer': window.location.href,
-            },
-            data: new URLSearchParams(data),
-            onload: function(response) {
-                resolve(response.finalUrl);
-            },
-            onerror: function(error) {
-                const match = error?.error?.match(/"https?:\/\/[^"]+"/);
-                if (match) {
-                    const finalUrl = match[0].replace(/"/g, "");
-                    resolve(finalUrl);
-                } else {
-                    reject(error);
+    addGlobalStyles() {
+        if (!this.styleInjected) {
+            const style = document.createElement('style');
+            style.textContent = `
+                *, *::before, *::after {
+                    box-sizing: border-box;
                 }
+
+                .${this.prefix}-notification-container {
+                    position: fixed;
+                    z-index: 9999999999;
+                    pointer-events: none;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    width: auto;
+                }
+
+                .${this.prefix}-notification-container.top-left {
+                    top: 20px;
+                    left: 20px;
+                    align-items: flex-start;
+                }
+
+                .${this.prefix}-notification-container.top-right {
+                    top: 20px;
+                    right: 20px;
+                    align-items: flex-end;
+                }
+
+                .${this.prefix}-notification-container.bottom-left {
+                    bottom: 20px;
+                    left: 20px;
+                    align-items: flex-start;
+                }
+
+                .${this.prefix}-notification-container.bottom-right {
+                    bottom: 20px;
+                    right: 20px;
+                    align-items: flex-end;
+                }
+
+                .${this.prefix}-notification-container.top-center {
+                    top: 20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    align-items: center;
+                }
+
+                .${this.prefix}-notification-container.bottom-center {
+                    bottom: 20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    align-items: center;
+                }
+
+                .${this.prefix}-notification-container.center {
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    align-items: center;
+                }
+
+                .${this.prefix}-notification {
+                    background: rgba(31, 31, 31, 0.65);
+                    backdrop-filter: blur(12px);
+                    -webkit-backdrop-filter: blur(12px);
+                    opacity: 0.95;
+                    border: 1px solid rgba(255,255,255,0.1);
+                    padding: 16px;
+                    border-radius: 12px;
+                    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+                    font-family: 'Roboto', sans-serif;
+                    color: #fff;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 6px;
+                    width: 380px;
+                    max-width: 90vw;
+                    word-break: break-word;
+                    overflow-wrap: break-word;
+                    pointer-events: auto;
+                    transform: translateY(20px);
+                    opacity: 0;
+                    transition: transform 0.3s ease, opacity 0.3s ease;
+                }
+
+                .${this.prefix}-notification.show {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+
+                .${this.prefix}-notification-title {
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    font-size: 1.05rem;
+                    font-weight: 600;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                    padding-bottom: 6px;
+                }
+
+                .${this.prefix}-notification-message {
+                    font-size: 0.95rem;
+                    line-height: 1.5;
+                    opacity: 0.85;
+                    word-wrap: break-word;
+                    overflow-wrap: break-word;
+                    white-space: normal;
+                    text-align: left;
+                    max-height: 4.2em;
+                    overflow: hidden;
+                    position: relative;
+                    transition: max-height 0.3s ease;
+                }
+
+                .${this.prefix}-notification-message.expanded {
+                    max-height: 1000px;
+                }
+
+                .${this.prefix}-notification-buttons {
+                    display: flex;
+                    gap: 8px;
+                    flex-wrap: wrap;
+                }
+
+                .${this.prefix}-notification-button {
+                    flex: 1;
+                    padding: 8px 12px;
+                    border-radius: 6px;
+                    border: none;
+                    background: #444;
+                    color: #fff;
+                    font-size: 0.9rem;
+                    cursor: pointer;
+                    transition: background 0.2s ease;
+                }
+
+                .${this.prefix}-notification-button:hover {
+                    background: #555;
+                }
+
+                .${this.prefix}-progress-bar {
+                    height: 4px;
+                    width: 100%;
+                    background: rgba(255, 255, 255, 0.1);
+                    overflow: hidden;
+                    border-radius: 2px;
+                    position: relative;
+                }
+
+                .${this.prefix}-progress-bar-fill {
+                    height: 100%;
+                    width: 0%;
+                    background: #3fe879;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    will-change: width;
+                }
+
+                @media (max-width: 768px) {
+                    .${this.prefix}-notification {
+                        width: 90vw;
+                        font-size: 0.85rem;
+                        padding: 12px;
+                    }
+                }
+            `;
+            style.setAttribute('data-zn-style', '');
+            document.head.appendChild(style);
+            this.styleInjected = true;
+        }
+    }
+
+    setPosition(position = 'top-right') {
+        if (!this.containerMap.has(position)) {
+            const container = document.createElement('div');
+            const shadowRoot = container.attachShadow({ mode: 'open' });
+            
+            const style = document.createElement('style');
+            style.textContent = this.generateStyles();
+            shadowRoot.appendChild(style);
+            
+            const wrapper = document.createElement('div');
+            wrapper.className = `${this.prefix}-notification-container ${position}`;
+            shadowRoot.appendChild(wrapper);
+            
+            document.body.appendChild(container);
+            this.containerMap.set(position, {
+                container,
+                wrapper: wrapper
+            });
+        }
+        
+        const containerData = this.containerMap.get(position);
+        this.container = containerData.wrapper;
+    }
+
+    generateStyles() {
+        return `
+            *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        .${this.prefix}-notification-container {
+            position: fixed !important;
+            z-index: 9999999999 !important;
+            pointer-events: none !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 10px !important;
+            width: auto !important;
+        }
+        .${this.prefix}-notification-container.top-left { 
+            top: 20px !important; 
+            left: 20px !important; 
+            align-items: flex-start !important; 
+        }
+        .${this.prefix}-notification-container.top-right { 
+            top: 20px !important; 
+            right: 20px !important; 
+            align-items: flex-end !important; 
+        }
+        .${this.prefix}-notification-container.bottom-left { 
+            bottom: 20px !important; 
+            left: 20px !important; 
+            align-items: flex-start !important; 
+        }
+        .${this.prefix}-notification-container.bottom-right { 
+            bottom: 20px !important; 
+            right: 20px !important; 
+            align-items: flex-end !important; 
+        }
+        .${this.prefix}-notification-container.top-center { 
+            top: 20px !important; 
+            left: 50% !important; 
+            transform: translateX(-50%) !important; 
+            align-items: center !important; 
+        }
+        .${this.prefix}-notification-container.bottom-center { 
+            bottom: 20px !important; 
+            left: 50% !important; 
+            transform: translateX(-50%) !important; 
+            align-items: center !important; 
+        }
+        .${this.prefix}-notification-container.center { 
+            top: 50% !important; 
+            left: 50% !important; 
+            transform: translate(-50%, -50%) !important; 
+            align-items: center !important; 
+        }
+        .${this.prefix}-notification {
+            background: rgba(31, 31, 31, 0.65) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            opacity: 0.95 !important;
+            border: 1px solid rgba(255,255,255,0.1) !important;
+            padding: 16px !important;
+            border-radius: 12px !important;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3) !important;
+            font-family: 'Roboto', sans-serif !important;
+            color: #fff !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 6px !important;
+            width: 380px !important;
+            max-width: 90vw !important;
+            word-break: break-word !important;
+            overflow-wrap: break-word !important;
+            pointer-events: auto !important;
+            transform: translateY(20px) !important;
+            opacity: 0 !important;
+            transition: transform 0.3s ease, opacity 0.3s ease !important;
+        }
+        .${this.prefix}-notification.show {
+            transform: translateY(0) !important;
+            opacity: 1 !important;
+        }
+        .${this.prefix}-notification-title {
+            display: flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+            font-size: 1.05rem !important;
+            font-weight: 600 !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+            padding-bottom: 6px !important;
+        }
+        .${this.prefix}-notification-message {
+            font-size: 0.95rem !important;
+            line-height: 1.5 !important;
+            opacity: 0.85 !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+            white-space: normal !important;
+            text-align: left !important;
+            max-height: 4.2em !important;
+            overflow: hidden !important;
+            position: relative !important;
+            transition: max-height 0.3s ease !important;
+        }
+        .${this.prefix}-notification-message.expanded {
+            max-height: 1000px !important;
+        }
+        .${this.prefix}-notification-buttons {
+            display: flex !important;
+            gap: 8px !important;
+            flex-wrap: wrap !important;
+        }
+        .${this.prefix}-notification-button {
+            flex: 1 !important;
+            padding: 8px 12px !important;
+            border-radius: 6px !important;
+            border: none !important;
+            background: #444 !important;
+            color: #fff !important;
+            font-size: 0.9rem !important;
+            cursor: pointer !important;
+            transition: background 0.2s ease !important;
+        }
+        .${this.prefix}-notification-button:hover {
+            background: #555 !important;
+        }
+        .${this.prefix}-progress-bar {
+            height: 4px !important;
+            width: 100% !important;
+            background: rgba(255, 255, 255, 0.1) !important;
+            overflow: hidden !important;
+            border-radius: 2px !important;
+            position: relative !important;
+        }
+        .${this.prefix}-progress-bar-fill {
+            height: 100% !important;
+            width: 0% !important;
+            background: #3fe879 !important;
+            position: absolute !important;
+            left: 0 !important;
+            top: 0 !important;
+            will-change: width !important;
+        }
+        .${this.prefix}-expand-button {
+            background: none !important;
+            color: #3fe879 !important;
+            font-size: 0.85rem !important;
+            padding: 0 !important;
+            border: none !important;
+            cursor: pointer !important;
+            margin-left: 8px !important;
+            opacity: 0 !important;
+            transition: opacity 0.2s ease !important;
+        }
+        .${this.prefix}-expand-wrapper {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 6px !important;
+        }
+        .${this.prefix}-expand-wrapper:hover .${this.prefix}-expand-button {
+            opacity: 1 !important;
+        }
+        .${this.prefix}-notification-countdown {
+            font-size: 0.75rem !important;
+        }
+        .${this.prefix}-notification.hide {
+            transform: translateY(20px) !important;
+            opacity: 0 !important;
+            transition: transform 0.3s ease-in, opacity 0.3s ease-in !important;
+        }
+        .${this.prefix}-notification.redirect {  border-color: #ed4e59 !important; box-shadow: 0 0 20px rgba(237, 78, 89, 0.4) !important; }
+        .${this.prefix}-notification.key {  border-color: #3fe879 !important; box-shadow: 0 0 20px rgba(63, 232, 121, 0.4) !important; }
+        .${this.prefix}-notification.error { border-color: #d82b2b !important; box-shadow: 0 0 20px rgba(216, 43, 43, 0.4) !important; }
+        .${this.prefix}-notification.status { border-color: #e87c3f !important; box-shadow: 0 0 20px rgba(232, 124, 63, 0.4) !important; }
+        .${this.prefix}-notification.default { border-color: #4154b0 !important; box-shadow: 0 0 20px rgba(65, 84, 176, 0.4) !important; }
+        @media (max-width: 768px) {
+            .${this.prefix}-notification {
+                width: 90vw !important;
+                font-size: 0.85rem !important;
+                padding: 12px !important;
+            }
+            .${this.prefix}-notification-title {
+                font-size: 0.95rem !important;
+            }
+            .${this.prefix}-notification-message {
+                font-size: 0.85rem !important;
+            }
+            .${this.prefix}-notification-button {
+                font-size: 0.85rem !important;
+                padding: 6px 10px !important;
+            }
+        }
+        @media (max-width: 480px) {
+            .${this.prefix}-notification {
+                font-size: 0.8rem !important;
+            }
+            .${this.prefix}-notification-title {
+                font-size: 0.9rem !important;
+            }
+            .${this.prefix}-notification-message {
+                font-size: 0.8rem !important;
+            }
+            .${this.prefix}-notification-button {
+                font-size: 0.8rem !important;
+                padding: 5px 8px !important;
+            }
+        `;
+    }
+
+    renderMessage(html) {
+        const div = document.createElement('div');
+        div.className = `${this.prefix}-notification-message`;
+        div.innerHTML = html;
+        return div;
+    }
+
+    addExpandButton(messageElement) {
+        requestAnimationFrame(() => {
+            const lineHeight = parseFloat(getComputedStyle(messageElement).lineHeight) || 20;
+            const lines = Math.round(messageElement.scrollHeight / lineHeight);
+            
+            if (lines > 3) {
+                const wrapper = document.createElement('div');
+                wrapper.className = `${this.prefix}-expand-wrapper`;
+                
+                const toggleBtn = document.createElement('button');
+                toggleBtn.className = `${this.prefix}-expand-button`;
+                toggleBtn.innerHTML = '▼';
+                
+                toggleBtn.addEventListener('click', () => {
+                    messageElement.classList.toggle('expanded');
+                    toggleBtn.innerHTML = messageElement.classList.contains('expanded') ? '▲' : '▼';
+                });
+
+                messageElement.parentNode.insertBefore(wrapper, messageElement.nextSibling);
+                wrapper.appendChild(messageElement);
+                wrapper.appendChild(toggleBtn);
             }
         });
+    }
+
+    notify(title, message, timeout = 5000, options = {}) {
+        this.ensureDependencies();
+        const { 
+            type = 'default', 
+            buttons = [], 
+            countdown = false, 
+            countdownText = `Dismissing in {time}s`,
+            position = 'top-right',
+            showProgress = false 
+        } = options;
+
+        this.setPosition(position);
+
+        let autoTimeoutId;
+        let resolvePromise;
+        const onClosePromise = new Promise(resolve => {
+            resolvePromise = resolve;
+        });
+
+        const notification = document.createElement('div');
+        notification.className = `${this.prefix}-notification ${type}`;
+
+        const titleElement = document.createElement('div');
+        titleElement.className = `${this.prefix}-notification-title`;
+        titleElement.innerHTML = `<i class="fas ${this.getIconClass(type)}"></i> ${title}`;
+        notification.appendChild(titleElement);
+
+        const messageElement = document.createElement('div');
+        messageElement.className = `${this.prefix}-notification-message`;
+        messageElement.textContent = message;
+        notification.appendChild(messageElement);
+
+        this.addExpandButton(messageElement);
+
+        const buttonContainer = document.createElement('div');
+        buttonContainer.className = `${this.prefix}-notification-buttons`;
+        this.createButtons(buttonContainer, buttons.slice(0, 2), notification, () => resolvePromise());
+        
+        if (buttons.length) {
+            notification.appendChild(buttonContainer);
+        }
+
+        if (showProgress && timeout !== null) {
+            const progressBar = document.createElement('div');
+            progressBar.className = `${this.prefix}-notification-bar`;
+            const fill = document.createElement('div');
+            fill.className = `${this.prefix}-notification-bar-fill`;
+            fill.style.transition = `width ${timeout}ms linear`;
+            progressBar.appendChild(fill);
+            notification.appendChild(progressBar);
+        }
+
+        // this.container.shadowRoot.querySelector(`.${this.prefix}-notification-container`).appendChild(notification);
+        // requestAnimationFrame(() => notification.classList.add('show'));
+        const containerData = this.containerMap.get(position);
+        containerData.wrapper.appendChild(notification);
+        
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                notification.classList.add('show');
+            });
+        });
+
+        if (countdown && timeout !== null) {
+            const countdownElement = document.createElement('div');
+            countdownElement.className = `${this.prefix}-notification-countdown`;
+            notification.appendChild(countdownElement);
+            this.startCountdown(countdownElement, timeout, countdownText, notification, () => resolvePromise());
+        } else if (timeout !== null) {
+            autoTimeoutId = _setTimeout(() => {
+                this.removeNotification(notification, () => resolvePromise());
+            }, timeout);
+        }
+
+        return {
+            element: notification,
+            close: () => {
+                _clearTimeout(autoTimeoutId);
+                this.removeNotification(notification, () => resolvePromise());
+            },
+            onClosed: async () => {
+                await onClosePromise;
+            }
+        };
+    }
+
+    single(message, timeout = 5000, options = {}) {
+        this.ensureDependencies();
+        const { type = 'default', position = 'top-center' } = options;
+        
+        this.setPosition(position);
+        
+        let autoTimeoutId;
+        let resolvePromise;
+        const onClosePromise = new Promise(resolve => {
+            resolvePromise = resolve;
+        });
+
+        const notification = document.createElement('div');
+        notification.className = `${this.prefix}-notification ${type}`;
+        notification.style.padding = '10px 20px';
+        notification.style.gap = '0';
+        notification.style.flexDirection = 'row';
+
+        const messageElement = document.createElement('div');
+        messageElement.className = `${this.prefix}-notification-message ${this.prefix}-single-notification-message`;
+        messageElement.textContent = message;
+        notification.appendChild(messageElement);
+
+        const containerData = this.containerMap.get(position);
+        containerData.wrapper.appendChild(notification);
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                notification.classList.add('show');
+            });
+        });
+
+        if (timeout !== null) {
+            autoTimeoutId = _setTimeout(() => {
+                this.removeNotification(notification, () => resolvePromise());
+            }, timeout);
+        }
+
+        return {
+            element: notification,
+            close: () => {
+                _clearTimeout(autoTimeoutId);
+                this.removeNotification(notification, () => resolvePromise());
+            },
+            onClosed: async () => {
+                await onClosePromise;
+            }
+        };
+    }
+
+    ensureDependencies() {
+        if (!document.querySelector('link[href*="fonts.googleapis.com"]')) {
+            const link = document.createElement('link');
+            link.href = 'https://fonts.googleapis.com/css2?family=Roboto&display=swap';
+            link.rel = 'stylesheet';
+            document.head.appendChild(link);
+        }
+
+        if (!document.querySelector('link[href*="fontawesome.com"]')) {
+            const faLink = document.createElement('link');
+            faLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+            faLink.rel = 'stylesheet';
+            document.head.appendChild(faLink);
+        }
+    }
+
+    getIconClass(type) {
+        switch (type) {
+            case 'redirect': return 'fa-external-link-alt';
+            case 'key': return 'fa-key';
+            case 'error': return 'fa-exclamation-circle';
+            case 'status': return 'fa-check-circle';
+            default: return 'fa-info-circle';
+        }
+    }
+
+    createButtons(container, buttonsConfig, notificationElement, resolve) {
+        buttonsConfig.forEach(button => {
+            const btn = document.createElement('button');
+            btn.textContent = button.text;
+            btn.className = `${this.prefix}-notification-button ${button.className || ''}`;
+            btn.addEventListener('click', () => {
+                if (button.onClick) {
+                    button.onClick(this, btn, notificationElement);
+                }
+            });
+            container.appendChild(btn);
+        });
+    }
+
+    async startCountdown(element, timeout, text, notification, resolve) {
+        let remainingTime = Math.ceil(timeout / 1000);
+        text = text || "Dismissing in {time}s";
+        
+        const notificationData = { 
+            element: notification, 
+            timeoutId: Symbol("manualCountdown") 
+        };
+        
+        this.notifications.push(notificationData);
+        const currentId = notificationData.timeoutId;
+        
+        element.textContent = text.replace('{time}', remainingTime);
+        
+        const sleep = (ms) => new Promise(r => _setTimeout(r, ms));
+        
+        while (remainingTime > 0 && notificationData.timeoutId === currentId) {
+            await sleep(1000);
+            remainingTime--;
+            element.textContent = text.replace('{time}', remainingTime);
+        }
+        
+        if (notificationData.timeoutId === currentId) {
+            this.removeNotification(notification, resolve);
+        }
+    }
+
+    removeNotification(notificationElement, resolve) {
+        if (!notificationElement) {
+            if (resolve) resolve();
+            return;
+        }
+
+        notificationElement.classList.remove('show');
+        notificationElement.classList.add('hide');
+
+        const handleTransitionEnd = () => {
+            notificationElement.removeEventListener('transitionend', handleTransitionEnd);
+            notificationElement.remove();
+            this.notifications = this.notifications.filter(n => n.element !== notificationElement);
+            if (resolve) resolve();
+        };
+
+        notificationElement.addEventListener('transitionend', handleTransitionEnd);
+        
+        _setTimeout(() => {
+            if (notificationElement.parentNode) {
+                notificationElement.remove();
+                this.notifications = this.notifications.filter(n => n.element !== notificationElement);
+                if (resolve) resolve();
+            }
+        }, 350);
+    }
+
+    cleanup() {
+        Array.from(document.querySelectorAll('[data-zn-style]')).forEach(el => el.remove());
+        this.containerMap.forEach(container => container.remove());
+        this.containerMap.clear();
+        this.styleInjected = false;
+    }
+}
+
+let zennify;
+window.addEventListener("DOMContentLoaded", function(event) {
+    if (window.zennify) {
+        zennify.cleanup();
+    }
+    zennify = new ZenNotification();
+});
+
+function copyButton(textToCopy) {
+    const sleep = (ms) => new Promise(r => _setTimeout(r, ms));
+    textToCopy = textToCopy.trim();
+    return {
+        text: "Copy",
+        onClick: async (instance, element, notification) => {
+            const originalText = element.textContent;
+            GM_setClipboard(textToCopy);
+            element.textContent = "Copied";
+            await sleep(1000);
+            element.textContent = originalText;
+        }
+    }
+}
+
+function redirectButton(url, customText = "Go to link") {
+    return { text: customText, onClick: () => { location.href.replace(url); }}
+}
+
+function buttonsHandle(data) {
+    function isValidURL(urlString) {
+        try {
+            const url = new URL(urlString);
+            const isWebProtocol = url.protocol === 'http:' || url.protocol === 'https:';
+            const hasValidHostname = url.hostname && url.hostname !== '';
+            const isNotSpecialScheme = !['javascript:', 'data:', 'mailto:', 'tel:', 'blob:'].includes(url.protocol);
+            const hasCorrectStructure = url.pathname === '/' || url.pathname.startsWith('/') && !url.pathname.startsWith('//');
+            return isWebProtocol && hasValidHostname && isNotSpecialScheme && hasCorrectStructure;
+        } catch (e) {
+            return false;
+        }
+    }
+    const buttons = [copyButton(data)];
+    if (isValidURL(data)) {
+        buttons.push(redirectButton(data))
+    } else {
+        buttons.push({
+            text:"Close",
+            className: "close-button",
+            onClick: (instance, element, notification) => {
+                instance.removeNotification(notification, () => {});
+            }
+        });
+    }
+    return buttons;
+}
+
+function keyNotification(config, key, customText = 'Got Key') {
+    const notified = zennify.notify(customText, key, null, {
+        type: "key",
+        buttons: [
+            copyButton(key)
+        ],
+    });
+    if (config) {
+        GM_setClipboard(key);
+        zennify.single(`${customText.includes("Key") ? "Key" : "Paste"} has been copied to your clipboard.`, 10000, {type:"key",position:"top-right"})
+    }
+    return notified;
+}
+
+async function redirectNotification(config, url) {
+    const sleep = (ms) => new Promise(r => _setTimeout(r, ms));
+    function isValidURL(urlString) {
+        try {
+            const url = new URL(urlString);
+            const isWebProtocol = url.protocol === 'http:' || url.protocol === 'https:';
+            const hasValidHostname = url.hostname && url.hostname !== '';
+            const isNotSpecialScheme = !['javascript:', 'data:', 'mailto:', 'tel:', 'blob:'].includes(url.protocol);
+            const hasCorrectStructure = url.pathname === '/' || url.pathname.startsWith('/') && !url.pathname.startsWith('//');
+            return isWebProtocol && hasValidHostname && isNotSpecialScheme && hasCorrectStructure;
+        } catch (e) {
+            return false;
+        }
+    }
+    const isURL = isValidURL(url);
+    const enabled = config.enabled && isURL;
+    const wait = enabled ? config.wait * 1000 : null;
+    const notified = zennify.notify("Bypassed Result", url, wait, {
+        type:"key", buttons: buttonsHandle(url), countdown: enabled ? true : false, countdownText: "Please wait while we redirect you in {time}s"
+    })
+    if (enabled && isValidURL(url)) {
+        await sleep(wait);
+        window.location.href = url;
+    }
+    return notified;
+}
+
+function errorNotification(message, timeout = 10 * 1000) {
+    return zennify.notify("Error", message, timeout, {
+        type: `error`,
+        buttons: [
+            copyButton(message),
+        ],
     });
 }
