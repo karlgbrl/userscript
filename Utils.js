@@ -109,3 +109,31 @@ async function waitClickButton(timer = 0, redirectURL) {
         });
     }
 }
+
+function getAdLink() {
+    let form = document.getElementsByTagName('form')[0];
+    let data = new FormData(form);
+    return new Promise(async (resolve, reject) => {
+        GM_xmlhttpRequest({
+            method: "POST",
+            url: form.action,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Referer': window.location.href,
+            },
+            data: new URLSearchParams(data),
+            onload: function(response) {
+                resolve(response.finalUrl);
+            },
+            onerror: function(error) {
+                const match = error?.error?.match(/"https?:\/\/[^"]+"/);
+                if (match) {
+                    const finalUrl = match[0].replace(/"/g, "");
+                    resolve(finalUrl);
+                } else {
+                    reject(error);
+                }
+            }
+        });
+    });
+}
